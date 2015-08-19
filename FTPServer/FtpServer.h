@@ -27,7 +27,7 @@
 
 #include <Streaming.h>
 #include <Ethernet.h>
-#include "SdList.h"
+#include <SdList.h>
 
 // Uncomment to print debugging info to console attached to Arduino
 // #define FTP_DEBUG
