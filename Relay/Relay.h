@@ -12,7 +12,6 @@ private:
     unsigned long _triggerStartMillis;
     unsigned long _triggerDelayMillis;
     unsigned long _minToggleMillis;
-    //unsigned long _FANSwitchMillis = 0;
 
 public:
     Relay(byte pin);
