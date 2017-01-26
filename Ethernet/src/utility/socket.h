@@ -5,7 +5,6 @@
 
 extern uint8_t socket(SOCKET s, uint8_t protocol, uint16_t port, uint8_t flag); // Opens a socket(TCP or UDP or IP_RAW mode)
 extern uint8_t socketStatus(SOCKET s);
-extern uint8_t* socketStatusRAW(SOCKET s, uint8_t remoteIP[]);
 extern void close(SOCKET s); // Close socket
 extern uint8_t connect(SOCKET s, uint8_t * addr, uint16_t port); // Establish TCP connection (Active connection)
 extern void disconnect(SOCKET s); // disconnect the connection
