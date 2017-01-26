@@ -39,6 +39,15 @@ uint8_t socketStatus(SOCKET s)
   return status;
 }
 
+uint8_t* socketStatusRAW(SOCKET s, uint8_t remoteIP[])
+{
+  SPI.beginTransaction(SPI_ETHERNET_SETTINGS);
+  W5100.readSnDIPR(s, remoteIP);
+  SPI.endTransaction();
+
+  return remoteIP;
+}
+
 
 /**
  * @brief	This function close the socket and parameter is "s" which represent the socket number

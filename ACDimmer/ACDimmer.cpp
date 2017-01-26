@@ -1,5 +1,5 @@
 #include "ACDimmer.h"
-#include <TimerOne/TimerOne.h>
+#include <TimerOne.h>
 
 int ACDimmer::_frequencyStep = 78;
 
