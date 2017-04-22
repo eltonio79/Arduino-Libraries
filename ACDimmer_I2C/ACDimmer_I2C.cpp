@@ -1,14 +1,14 @@
 #include "ACDimmer_I2C.h"
 #include <EEPROM.h>
 #include <Wire.h>
-//#include <core/MyMessage.h>
-//#include <core/MySensorsCore.h>
+#include <core/MyMessage.h>
+#include <core/MySensorsCore.h>
 
 // Implementation of ACDimmer_I2C class
 
 ACDimmer_I2C::ACDimmer_I2C(byte slaveI2CAddress /* = 0 */, byte minimumValue /* = 128 */, byte maximumValue /*= 0 */) :
-    _value(minimumValue),
-    _lastValue(maximumValue),
+    _value(0),
+    _lastValue(100),
     _minimumValue(minimumValue),
     _maximumValue(maximumValue),
     _slaveI2CAddress(slaveI2CAddress),
@@ -44,28 +44,34 @@ ACDimmer_I2C::~ACDimmer_I2C()
 
 void ACDimmer_I2C::setValue(byte value, bool store /* = false */)
 {
-    // sanity check
+    // sanity check's
     if (value > 100)
     {
         value = 100;
     }
 
+    // light value hasn't changed
+    if (_value == value)
+    {
+        return;
+    }
+
+    // last value should be greater than 0
+    // it is used for switching it "back" to last known dimming state
+    if (store && _value > 0)
+    {
+        _lastValue = _value;
+    }
+
     _value = value;
 
-    // convert value to RAW value and send it to I2C slave dimmer (Attiny85)
-    SendI2CCommand();
+    // convert and send RAW dimming value to I2C slave dimmer (Attiny85)
+    sendMessage_I2C(getValueRaw());
 
     if (store)
     {
         EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 0, _value);
-
-        // last value should be greater than 0 always
-        // it is used only for switching it "back" to last known dimming state
-        if (_value > 0)
-        {
-            _lastValue = _value;
-            EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 1, _lastValue);
-        }
+        EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 1, _lastValue);
     }
 };
 
@@ -73,6 +79,27 @@ byte ACDimmer_I2C::getValue() const
 {
     return _value;
 };
+
+byte ACDimmer_I2C::getValueRaw() const
+{
+    // calculate RAW dimming value
+    byte valueRaw = 0;
+
+    if (_value == 0)
+    {
+        valueRaw = 128; // turn OFF
+    }
+    else if (_value == 100)
+    {
+        valueRaw = 0;  // turn ON
+    }
+    else
+    {
+        valueRaw = map(_value, 1, 100, _minimumValue, _maximumValue); // DIM message (inside allowed range)
+    }
+
+    return valueRaw;
+}
 
 void ACDimmer_I2C::setMinimumValue(byte value)
 {
@@ -106,7 +133,7 @@ byte ACDimmer_I2C::getSlaveI2CAddress() const
 {
     return _slaveI2CAddress;
 };
-/*
+
 void ACDimmer_I2C::setMyMessageAccessor(MyMessage* myMessageAccessor)
 {
     _myMessageAccessor = myMessageAccessor;
@@ -116,7 +143,7 @@ MyMessage* ACDimmer_I2C::getMyMessageAccessor() const
 {
     return _myMessageAccessor;
 };
-*/
+
 void ACDimmer_I2C::setSequenceNumber(byte value)
 {
     _sequenceNumber = value;
@@ -136,6 +163,14 @@ void ACDimmer_I2C::readEEPROM()
     _slaveI2CAddress = EEPROM.read(EEPROM_DATA_SIZE * _sequenceNumber + 4);
 
     _fadeFromValue = _value;
+
+    // check how works receiving last state from the controller instead of EEPROM ( ... request(i + 1, V_STATUS); ...)
+
+    // switch the light level to last known value
+    sendMessage_I2C(getValueRaw());  
+
+    // send dimmer initial value to the controller
+    sendMessage_Controller(V_PERCENTAGE, getValue());
 }
 
 void ACDimmer_I2C::writeEEPROM()
@@ -155,21 +190,28 @@ bool ACDimmer_I2C::isSwitchedOn() const
 void ACDimmer_I2C::switchOn()
 {
     stopFade();
-    setValue(_lastValue); // not need to store to EEPROM here
+
+    // switch between MAX and last ON value
+    setValue(_value > 0 && _value < 100 ? 100 : _lastValue, true);
+
+    // send actual dimming level to controller
+    sendMessage_Controller(V_PERCENTAGE, getValue());
 
     // send actual light status to controller
-    //if (_myMessageAccessor != NULL)
-    //    send(_myMessageAccessor->setSensor(_sequenceNumber + 1).setType(V_STATUS).set(isSwitchedOn()));
+    // sendMessage_Controller(V_STATUS, isSwitchedOn());
 };
 
 void ACDimmer_I2C::switchOff()
 {
     stopFade();
-    setValue(0); // not need to store to EEPROM here
+
+    setValue(0, true);
+
+    // send actual dimming level to controller
+    sendMessage_Controller(V_PERCENTAGE, getValue());
 
     // send actual light status to controller
-    //if (_myMessageAccessor != NULL)
-    //    send(_myMessageAccessor->setSensor(_sequenceNumber + 1).setType(V_STATUS).set(isSwitchedOn()));
+    // sendMessage_Controller(V_STATUS, isSwitchedOn());
 };
 
 bool ACDimmer_I2C::isFading() const
@@ -193,10 +235,14 @@ void ACDimmer_I2C::startFade(byte fadeToValue, unsigned long duration)
 
     stopFade();
 
-    // fade time is to short
+    // fade time is to short - assume turning the encoder knob ?
     if (duration <= MIN_FADE_INTERVAL)
     {
-        setValue(fadeToValue, true);
+        setValue(fadeToValue, false); // hmmm mo¿e przekazywaæ to z czy ma iœæ do EEPROM z góry?
+
+        // send actual dimming level to controller - ASSUMING THROTTLE !
+        sendMessage_Controller(V_PERCENTAGE, getValue());
+
         return;
     }
 
@@ -225,7 +271,11 @@ void ACDimmer_I2C::stopFade()
 
 byte ACDimmer_I2C::getFadeProgress() const
 {
-    return map(_value, _fadeFromValue, _fadeToValue, 0, 100);
+    // check if fading is in progress
+    if (isFading())
+        return map(_value, _fadeFromValue, _fadeToValue, 0, 100);
+    else
+        return 100; // just return 100 % (fading done) if it is not
 }
 
 // function has to be called in every processor tick
@@ -257,8 +307,7 @@ void ACDimmer_I2C::update()
         setValue(_fadeToValue, true); // store fading values to EEPROM
 
         // send actual dimming level to controller
-        //if (_myMessageAccessor != NULL)
-        //    send(_myMessageAccessor->setSensor(_sequenceNumber + 1).setType(V_PERCENTAGE).set(getValue()));
+        sendMessage_Controller(V_PERCENTAGE, getValue());
 
         return;
     }
@@ -276,26 +325,17 @@ void ACDimmer_I2C::update()
     return;
 }
 
-void ACDimmer_I2C::SendI2CCommand()
+void ACDimmer_I2C::sendMessage_I2C(byte command)
 {
-    // calculate RAW dimming value
-    byte valueRaw = 0;
-
-    if (_value == 0)
-    {
-        valueRaw = 128; // turn OFF message
-    }
-    else if (_value == 100)
-    {
-        valueRaw = 0;  // turn ON message
-    }
-    else
-    {
-        valueRaw = map(_value, 1, 100, _minimumValue, _maximumValue); // DIM message (inside allowed range)
-    }
-
     // send RAW dimming value through I2C to slave AC dimmer
     Wire.beginTransmission(_slaveI2CAddress);
-    Wire.write(valueRaw);
+    Wire.write(command);
     Wire.endTransmission();
+}
+
+void ACDimmer_I2C::sendMessage_Controller(byte type, byte command)
+{
+    // send actual light status to controller (if _myMessageAccessor was set)
+    if (_myMessageAccessor != NULL)
+        send(_myMessageAccessor->setSensor(_sequenceNumber + 1).setType(type).set(command));
 }
