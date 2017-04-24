@@ -8,6 +8,7 @@
 #define MIN_FADE_INTERVAL 20
 
 // Size of the data for ACDimmer_I2C class to store in the EEPROM
+#define EEPROM_DATA_OFFSET 5
 #define EEPROM_DATA_SIZE 5
 
 class MyMessage;
@@ -15,7 +16,6 @@ class MyMessage;
 class ACDimmer_I2C
 {
 public:
-
     // #param slaveI2CAddress adres sciemniacza I2C (Attiny85)
     // #param minimumValue (0 - 128); dobrac eksperymentalnie
     // #param maximumValue (0 - 128); dobrac eksperymentalnie
@@ -49,7 +49,10 @@ public:
 
     bool isSwitchedOn() const;
     void switchOn();
+    void switchToggleOn();
+    void switchLast();
     void switchOff();
+    void switchToggle(bool threeStateMode = false);
 
     bool isFading() const;
     void startFade(byte fadeValue, unsigned long duration);

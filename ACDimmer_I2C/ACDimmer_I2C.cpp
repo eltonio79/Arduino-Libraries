@@ -3,12 +3,13 @@
 #include <Wire.h>
 #include <core/MyMessage.h>
 #include <core/MySensorsCore.h>
+#include <Streaming.h>
 
 // Implementation of ACDimmer_I2C class
 
 ACDimmer_I2C::ACDimmer_I2C(byte slaveI2CAddress /* = 0 */, byte minimumValue /* = 128 */, byte maximumValue /*= 0 */) :
     _value(0),
-    _lastValue(100),
+    _lastValue(50), // last value has to be from 1 to 99 %
     _minimumValue(minimumValue),
     _maximumValue(maximumValue),
     _slaveI2CAddress(slaveI2CAddress),
@@ -56,9 +57,9 @@ void ACDimmer_I2C::setValue(byte value, bool store /* = false */)
         return;
     }
 
-    // last value should be greater than 0
-    // it is used for switching it "back" to last known dimming state
-    if (store && _value > 0)
+    // last value should be always in the dimming range excluding ON and OFF states
+    // it is used for switching it "back" to last known positive DIMMING state
+    if (store && (_value > 0) && (_value < 100))
     {
         _lastValue = _value;
     }
@@ -70,8 +71,11 @@ void ACDimmer_I2C::setValue(byte value, bool store /* = false */)
 
     if (store)
     {
-        EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 0, _value);
-        EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 1, _lastValue);
+        EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 0, _value);
+        EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 1, _lastValue);
+
+        //Serial << "Write sn:" << _sequenceNumber << " address: " << EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 0 << " _value = " << _value << endln;
+        //Serial << "Write sn:" << _sequenceNumber << " address: " << EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 1 << " _lastValue = " << _lastValue << endln;
     }
 };
 
@@ -104,7 +108,7 @@ byte ACDimmer_I2C::getValueRaw() const
 void ACDimmer_I2C::setMinimumValue(byte value)
 {
     _minimumValue = value;
-    EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 1, _minimumValue);
+    EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 2, _minimumValue);
 };
 
 byte ACDimmer_I2C::getMinimumValue() const
@@ -115,7 +119,7 @@ byte ACDimmer_I2C::getMinimumValue() const
 void ACDimmer_I2C::setMaximumValue(byte value)
 {
     _maximumValue = value;
-    EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 2, _maximumValue);
+    EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 3, _maximumValue);
 };
 
 byte ACDimmer_I2C::getMaximumValue() const
@@ -126,7 +130,7 @@ byte ACDimmer_I2C::getMaximumValue() const
 void ACDimmer_I2C::setSlaveI2CAddress(byte value)
 {
     _slaveI2CAddress = value;
-    EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 3, _slaveI2CAddress);
+    EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 4, _slaveI2CAddress);
 };
 
 byte ACDimmer_I2C::getSlaveI2CAddress() const
@@ -156,11 +160,18 @@ byte ACDimmer_I2C::getSequenceNumber() const
 
 void ACDimmer_I2C::readEEPROM()
 {
-    _value = EEPROM.read(EEPROM_DATA_SIZE * _sequenceNumber + 0);
-    _lastValue = EEPROM.read(EEPROM_DATA_SIZE * _sequenceNumber + 1);
-    _minimumValue = EEPROM.read(EEPROM_DATA_SIZE * _sequenceNumber + 2);
-    _maximumValue = EEPROM.read(EEPROM_DATA_SIZE * _sequenceNumber + 3);
-    _slaveI2CAddress = EEPROM.read(EEPROM_DATA_SIZE * _sequenceNumber + 4);
+    _value = EEPROM.read(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 0);
+    _lastValue = EEPROM.read(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 1);
+    _minimumValue = EEPROM.read(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 2);
+    _maximumValue = EEPROM.read(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 3);
+    _slaveI2CAddress = EEPROM.read(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 4);
+
+    // Serial << "Read sn." << _sequenceNumber <<  " address: " << EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 0 << " _value = " << _value << endln;
+    // Serial << "Read sn." << _sequenceNumber <<  " address: " << EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 1 << " _lastValue = " << _lastValue << endln;
+    // Serial << "Read sn." << _sequenceNumber <<  " address: " << EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 2 << " _minimumValue = " << _minimumValue << endln;
+    // Serial << "Read sn." << _sequenceNumber <<  " address: " << EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 3 << " _maximumValue = " << _maximumValue << endln;
+    // Serial << "Read sn." << _sequenceNumber <<  " address: " << EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 4 << " _slaveI2CAddress = " << _slaveI2CAddress << endln;
+    // Serial << endln;
 
     _fadeFromValue = _value;
 
@@ -175,11 +186,11 @@ void ACDimmer_I2C::readEEPROM()
 
 void ACDimmer_I2C::writeEEPROM()
 {
-    EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 0, _value);
-    EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 1, _lastValue);
-    EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 2, _minimumValue);
-    EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 3, _maximumValue);
-    EEPROM.write(EEPROM_DATA_SIZE * _sequenceNumber + 4, _slaveI2CAddress);
+    EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 0, _value);
+    EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 1, _lastValue);
+    EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 2, _minimumValue);
+    EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 3, _maximumValue);
+    EEPROM.write(EEPROM_DATA_OFFSET + EEPROM_DATA_SIZE * _sequenceNumber + 4, _slaveI2CAddress);
 }
 
 bool ACDimmer_I2C::isSwitchedOn() const
@@ -190,9 +201,19 @@ bool ACDimmer_I2C::isSwitchedOn() const
 void ACDimmer_I2C::switchOn()
 {
     stopFade();
+    setValue(100, true);
 
-    // switch between MAX and last ON value
-    setValue(_value > 0 && _value < 100 ? 100 : _lastValue, true);
+    // send actual dimming level to controller
+    sendMessage_Controller(V_PERCENTAGE, getValue());
+
+    // send actual light status to controller
+    // sendMessage_Controller(V_STATUS, isSwitchedOn());
+};
+
+void ACDimmer_I2C::switchLast()
+{
+    stopFade();
+    setValue(_lastValue, true);
 
     // send actual dimming level to controller
     sendMessage_Controller(V_PERCENTAGE, getValue());
@@ -204,7 +225,6 @@ void ACDimmer_I2C::switchOn()
 void ACDimmer_I2C::switchOff()
 {
     stopFade();
-
     setValue(0, true);
 
     // send actual dimming level to controller
@@ -213,6 +233,24 @@ void ACDimmer_I2C::switchOff()
     // send actual light status to controller
     // sendMessage_Controller(V_STATUS, isSwitchedOn());
 };
+
+void ACDimmer_I2C::switchToggle(bool threeStateMode /* = false */)
+{
+    if (_value == 100 || (_value > 0 && !threeStateMode))
+        switchOff();
+    else if (_value == 0 && threeStateMode)
+        switchLast();
+    else
+        switchOn();
+};
+
+void ACDimmer_I2C::switchToggleOn()
+{
+    if (_value == 100)
+        switchLast();
+    else
+        switchOn();
+}
 
 bool ACDimmer_I2C::isFading() const
 {
@@ -304,7 +342,7 @@ void ACDimmer_I2C::update()
     if (percent >= 1)
     {
         stopFade();
-        setValue(_fadeToValue, true); // store fading values to EEPROM
+        setValue(_fadeToValue, false); // hmmm mo¿e przekazywaæ to z czy ma iœæ do EEPROM z góry?
 
         // send actual dimming level to controller
         sendMessage_Controller(V_PERCENTAGE, getValue());
@@ -316,7 +354,7 @@ void ACDimmer_I2C::update()
     float fadeDiff = _fadeToValue - _value;
     int increment = round(fadeDiff * percent);
 
-    setValue(_value + increment); // save EEPROM write cycles not writing it here, during dimming
+    setValue(_value + increment, false); // false to save EEPROM write cycles not writing it here, during dimming
 
     // Update time and finish
     _fadeDuration -= timeDiff;
