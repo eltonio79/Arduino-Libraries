@@ -1,7 +1,7 @@
 #ifndef ACDimmer_I2C_H_
 #define ACDimmer_I2C_H_
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 // The minimum time (milliseconds) the program will wait between LED adjustments
 // Adjust this define to modify performance

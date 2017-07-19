@@ -1,9 +1,9 @@
 #include "ACDimmer_I2C.h"
 #include <EEPROM.h>
 #include <Wire.h>
-#include <core/MyMessage.h>
-#include <core/MySensorsCore.h>
 #include <Streaming.h>
+#include <..\MySensors\core\MyMessage.h>
+#include <..\MySensors\core\MySensorsCore.h>
 
 // Implementation of ACDimmer_I2C class
 
