@@ -20,6 +20,7 @@ public:
     ~ACDimmer();
 
     void setDimmingLevel(byte dimmingLevel);                // set the dimming level
+    int getDimmingLevel() const;                            // get the dimming level
     volatile void zeroCrossing();                           // has to be called when AC Zero Cross is detected
     volatile void dimming();                                // has to be called during each frequency step
 

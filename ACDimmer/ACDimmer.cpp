@@ -28,6 +28,11 @@ void ACDimmer::setDimmingLevel(byte dimmingLevel)
     _dimmingLevel = dimmingLevel;
 }
 
+int ACDimmer::getDimmingLevel() const
+{
+    return _dimmingLevel;
+}
+
 volatile void ACDimmer::zeroCrossing()
 {
     _zeroCrossDetected = true; // set the true to tell our dimming() function that a zero cross has occured
