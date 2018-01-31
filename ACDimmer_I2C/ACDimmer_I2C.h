@@ -17,8 +17,8 @@ class ACDimmer_I2C
 {
 public:
     // #param slaveI2CAddress adres sciemniacza I2C (Attiny85)
-    // #param minimumValue (0 - 128); dobrac eksperymentalnie
-    // #param maximumValue (0 - 128); dobrac eksperymentalnie
+    // #param minimumValue (0 - 128); dobieraæ eksperymentalnie (per ¿arówka / triak)
+    // #param maximumValue (0 - 128); dobieraæ eksperymentalnie (per ¿arówka / triak)
     ACDimmer_I2C(byte slaveI2CAddress = 0, byte minimumValue = 128, byte maximumValue = 0);
 
     ACDimmer_I2C(const ACDimmer_I2C& other);

@@ -9,6 +9,7 @@
 EEPROM	KEYWORD1
 EERef	KEYWORD1
 EEPtr	KEYWORD2
+EEBit	KEYWORD2
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -19,3 +20,4 @@ update	KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################
+
