@@ -8,7 +8,6 @@
 #define MIN_FADE_INTERVAL 20
 
 // Size of the data for ACDimmer_I2C class to store in the EEPROM
-#define EEPROM_DATA_OFFSET 5
 #define EEPROM_DATA_SIZE 5
 
 class MyMessage;
@@ -23,6 +22,8 @@ public:
 
     ACDimmer_I2C(const ACDimmer_I2C& other);
     ~ACDimmer_I2C();
+
+    ACDimmer_I2C& operator=(const ACDimmer_I2C& other);
 
     // #param value ( 0 - 100 % )
     void setValue(byte value, bool store = false);
@@ -43,6 +44,12 @@ public:
 
     void setSequenceNumber(byte value);
     byte getSequenceNumber() const;
+
+    void setEEPROMOffset(byte value);
+    byte getEEPROMOffset() const;
+
+    void setSensorsTypeOffset(byte value);
+    byte getSensorsTypeOffset() const;
 
     void readEEPROM();
     void writeEEPROM();
@@ -69,6 +76,8 @@ private:
     void sendMessage_I2C(byte message);
     void sendMessage_Controller(byte type, byte command);
 
+    void CopyFrom(const ACDimmer_I2C& other);
+
     // Properties stored inside EEPROM
     byte _value;
     byte _lastValue;
@@ -85,6 +94,12 @@ private:
 
     // this identifier helps to hide implementation of re/storing an array of objects to/from EEPROM
     byte _sequenceNumber;
+
+    // this identifier is the start address in the EEPROM to store the data
+    byte _eepromOffset;
+
+    // this identifier is the sensors type offset in MySensors register
+    byte _sensorsTypeOffset;
 
     // reference to global message to controller, used to construct messages "on the fly"
     MyMessage* _myMessageAccessor;
