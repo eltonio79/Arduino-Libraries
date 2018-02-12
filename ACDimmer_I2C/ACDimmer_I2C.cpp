@@ -313,11 +313,12 @@ void ACDimmer_I2C::startFade(byte fadeToValue, unsigned long duration)
 
     stopFade();
 
-    // fade time is to short - assume turning the encoder knob ?
+    // fade time is to short - e.g. assume some is turning the encoder knob ?
     if (duration <= MIN_FADE_INTERVAL)
     {
-        setValue(fadeToValue, false); // hmmm mo¿e przekazywaæ to z czy ma iœæ do EEPROM z góry?
+        // do nothing and just returning here will be better?
 
+        setValue(fadeToValue, false); // hmmm mo¿e przekazywaæ to z czy ma iœæ do EEPROM z góry?
         // send actual dimming level to controller - ASSUMING THROTTLE !
         sendMessage_Controller(V_PERCENTAGE, getValue());
 
@@ -330,7 +331,6 @@ void ACDimmer_I2C::startFade(byte fadeToValue, unsigned long duration)
 
     // Figure out what the interval should be so that we're chaning the color by at least 1 each cycle
     // Minimum fade interval is MIN_FADE_INTERVAL
-
     float fadeDiff = abs(_value - _fadeToValue);
     _fadeInterval = round(static_cast<float>(duration) / fadeDiff);
 

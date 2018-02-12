@@ -2,11 +2,11 @@
 #define LatchingRelay_H_
 
 #include "Arduino.h"
-#include "Relay.h"
+#include "RelayEx.h"
 
 class PCF8574;
 
-class LatchingRelay : public Relay
+class LatchingRelay : public RelayEx
 {
     static const byte _switchingOffsetTimeMillis;
 

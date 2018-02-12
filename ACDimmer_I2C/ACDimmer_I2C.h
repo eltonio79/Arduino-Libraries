@@ -85,7 +85,7 @@ private:
     byte _maximumValue;
     byte _slaveI2CAddress;
 
-    // Unblocking dimming properties
+    // Unblocking fading members (move to common class)
     byte _fadeFromValue;
     byte _fadeToValue;
     unsigned long _fadeInterval;
