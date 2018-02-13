@@ -31,7 +31,7 @@ public:
     bool switchOff(unsigned long seconds);
     bool switchOn();
     bool switchOff();
-    bool toggle();
+    bool switchToggle();
 
     // call it in the main loop
     void update();

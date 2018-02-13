@@ -126,7 +126,7 @@ bool Relay::switchOff()
     }
 }
 
-bool Relay::toggle()
+bool Relay::switchToggle()
 {
     if (_isTiming)
         return false;
@@ -144,7 +144,7 @@ void Relay::update()
             _triggerDelayMillis = 0;
 
             _isTiming = false;
-            toggle();
+            switchToggle();
         }
     }
 }
