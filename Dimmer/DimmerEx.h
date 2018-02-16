@@ -8,6 +8,24 @@
 // The minimum time (milliseconds) the program will wait between LED adjustments
 // Adjust this define to modify performance
 
+//dodaæ dimming curve - ze wzoru i z tabeli sterowane static memberem w ca³ej klasie lub wy³¹czane (enum raw calc led8 led10 led12 led16 mains)
+
+// przyklad uzycia "dimming curve ze wzoru" // https://diarmuid.ie/blog/pwm-exponential-led-fading-on-arduino-or-other-platforms/
+// The number of Steps between the output being on and off
+//const int dimIntervals = 100; // DimmerEx::VALUE_MAX - DimmerEx::VALUE_MIN
+// The R value in the graph equation
+// float R = 0.0f;
+// Calculate the R variable (only needs to be done once - at setup())
+//R = (dimIntervals * log10(2)) / (log10(255));
+//for (int interval = 0; interval <= dimIntervals; interval++)
+// {
+//    // Calculate the required PWM value for this interval step
+//    brightness = pow(2, (interval / R)) - 1;
+//    // Set the LED output to the calculated brightness
+//    analogWrite(transistorPin, brightness);
+//    delay(7);                                   // delay (n) where n is time to full brightness in milliseconds
+// }
+
 class DimmerEx
 {
 protected:
@@ -23,27 +41,40 @@ public:
     virtual ~DimmerEx();
     DimmerEx& operator=(const DimmerEx& other);
 
-    // #param acceted values from 0 to 100 (percent of the light)
-    virtual void setValue(byte value, bool store);
+    // EEPROM access methods
+    virtual void readEEPROM(bool notify);
+    virtual void saveEEPROM(bool notify);
+
+    // Member setters / getters
+    virtual void setValue(byte value, bool store); // acceted values from 0 to 100 (percent of the light)
     byte getValue() const;
 
+    // Calculates RAW dimming value (acceptable by hardware, derived dimmer)
+    virtual unsigned int getValueRaw() const;
+
+    // Three-state functionality
     bool isSwitchedOn() const;
-    void switchOn();
-    void switchToggleOn();
-    void switchLast();
-    void switchOff();
-    void switchToggle(bool threeStateMode = false);
 
+    void switchOn(bool store);
+    void switchToggleOn(bool store);
+    void switchLast(bool store);
+    void switchOff(bool store);
+    void switchToggle(bool threeStateMode, bool store);
+
+    // Dimming functionality
     bool isFading() const;
-    void startFade(byte fadeValue, unsigned long duration);
-    void stopFade();
+    byte getFadeProgress() const; // returns current dimming progress in percentage ( 0 - 100 % )
 
-    // returns current dimming progress in percentage ( 0 - 100 % )
-    byte getFadeProgress() const;
+    void startFade(byte fadeValue, unsigned long duration, bool store);
+    void stopFade();
 
     // This function has to be called in every processor tick / in the loop(s).
     // It is used to deliver non-code-blocking fade effect.
     void update();
+
+    // Sequence number in the dimmers array (group ID)
+    void setSequenceNumber(byte value);
+    byte getSequenceNumber() const;
 
 private:
     void CopyFrom(const DimmerEx& other);
@@ -58,6 +89,9 @@ protected:
     unsigned long _fadeDuration;
     unsigned long _fadeInterval;
     unsigned long _fadeLastStepTime;
+    bool _store;
+    // this identifier helps to hide implementation of re/storing an array of objects to/from EEPROM and comunicate with external things (MySensors)
+    byte _sequenceNumber;
 };
 
 #endif // DIMMEREX_H_

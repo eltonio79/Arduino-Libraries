@@ -1,11 +1,12 @@
 #include "Relay.h"
 
-Relay::Relay() :
+Relay::Relay(unsigned long minToggleMillis /*= 0 */) :
 _isOn(false),
+_store(false),
 _isTiming(false),
 _triggerStartMillis(0),
 _triggerDelayMillis(0),
-_minToggleMillis(0)
+_minToggleMillis(minToggleMillis)
 {
 }
 
@@ -31,6 +32,7 @@ Relay& Relay::operator=(const Relay& other)
 void Relay::CopyFrom(const Relay& other)
 {
     _isOn = other._isOn;
+    _store = other._store;
     _isTiming = other._isTiming;
     _triggerStartMillis = other._triggerStartMillis;
     _triggerDelayMillis = other._triggerDelayMillis;
@@ -42,51 +44,41 @@ bool Relay::isOn()
     return _isOn;
 }
 
-// wywal i zastap setMinToggleMilis? inicjalizacja jest teraz w metodzie readEEPROM()
-// po co tu by³o zerowane _triggerStartMillis na koniec...
-void Relay::init(bool bOn, unsigned long minToggleMillis)
-{
-    _minToggleMillis = minToggleMillis;
-
-    _isOn = bOn;
-    _isOn ? switchOn() : switchOff();
-
-    _triggerStartMillis = 0; // po co ?
-}
-
-bool Relay::switchOn(unsigned long seconds)
+bool Relay::switchOn(unsigned long seconds, bool store)
 {
     if (_isTiming || _isOn)
         return false;
 
-    bool bSwitched = switchOn();
+    bool bSwitched = switchOn(store);
 
     if (bSwitched)
     {
         _triggerDelayMillis = seconds * 1000;
         _isTiming = true;
+        _store = store;
     }
 
     return bSwitched;
 }
 
-bool Relay::switchOff(unsigned long seconds)
+bool Relay::switchOff(unsigned long seconds, bool store)
 {
     if (_isTiming || !_isOn)
         return false;
 
-    bool bSwitched = switchOff();
-    
+    bool bSwitched = switchOff(store);
+
     if (bSwitched)
     {
         _triggerDelayMillis = seconds * 1000;
         _isTiming = true;
+        _store - store;
     }
 
     return bSwitched;
 }
 
-bool Relay::switchOn()
+bool Relay::switchOn(bool store)
 {
     if (_isTiming)
         return false;
@@ -96,7 +88,7 @@ bool Relay::switchOn()
         _triggerStartMillis = millis();
         _isOn = true;
 
-        On(); // relay-type dependant virtual function
+        On(store); // relay-type dependant virtual function
 
         return true;
     }
@@ -106,7 +98,7 @@ bool Relay::switchOn()
     }
 }
 
-bool Relay::switchOff()
+bool Relay::switchOff(bool store)
 {
     if (_isTiming)
         return false;
@@ -116,7 +108,7 @@ bool Relay::switchOff()
         _triggerStartMillis = millis();
         _isOn = false;
 
-        Off(); // relay-type dependant virtual function
+        Off(store); // relay-type dependant virtual function
 
         return true;
     }
@@ -126,12 +118,12 @@ bool Relay::switchOff()
     }
 }
 
-bool Relay::switchToggle()
+bool Relay::switchToggle(bool store)
 {
     if (_isTiming)
         return false;
 
-    return _isOn ? switchOff() : switchOn();
+    return _isOn ? switchOff(store) : switchOn(store);
 }
 
 void Relay::update()
@@ -144,7 +136,8 @@ void Relay::update()
             _triggerDelayMillis = 0;
 
             _isTiming = false;
-            switchToggle();
+            switchToggle(_store);
+            _store = false;
         }
     }
 }

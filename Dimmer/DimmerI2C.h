@@ -4,16 +4,19 @@
 #include <Arduino.h>
 #include <DimmerEx.h>
 
-// Size of the data for DimmerI2C class to store in the EEPROM
-#define EEPROM_DATA_SIZE 5
-
 class MyMessage;
 
 class DimmerI2C : public DimmerEx
 {
 private:
-    static byte RAW_VALUE_MIN;
-    static byte RAW_VALUE_MAX;
+    static byte EEPROM_DATA_SIZE;           // Size of the data for DimmerI2C class to store in the EEPROM
+    static byte RAW_VALUE_MIN;              // minimum RAW value (normally 128)
+    static byte RAW_VALUE_MAX;              // minimum RAW value (normally 0)
+
+    static byte EEPROM_OFFSET;              // this identifier is the start address in the EEPROM to store the data
+    static byte MYSENSORS_OFFSET;           // this identifier is the sensors type offset in MySensors register
+    static MyMessage* MYMESSAGE_ACCESSOR;   // reference to global message to controller, used to construct messages "on the fly"
+
 public:
     // #param slaveI2CAddress adres sciemniacza I2C (Attiny85 AC DIMMER MODULE or whatever..)
     // #param minimumValue (0 - 128); dobieraæ eksperymentalnie (per ¿arówka / triak)
@@ -24,11 +27,14 @@ public:
     DimmerI2C& operator=(const DimmerI2C& other);
 
     // EEPROM access methods
-    void readEEPROM(bool notify);
-    void saveEEPROM(bool notify);
+    virtual void readEEPROM(bool notify);
+    virtual void saveEEPROM(bool notify);
 
-    // Other methods
+    // Member setters / getters
     virtual void setValue(byte value, bool store);
+
+    // Calculates RAW dimming value (acceptable by hardware, derived dimmer)
+    virtual unsigned int getValueRaw() const;
 
     void setMinimumValue(byte value, bool store);
     byte getMinimumValue() const;
@@ -39,19 +45,21 @@ public:
     void setSlaveI2CAddress(byte value, bool store);
     byte getSlaveI2CAddress() const;
 
-    void setMyMessageAccessor(MyMessage* myMessageAccessor);
-    MyMessage* getMyMessageAccessor() const;
-
+    // Sequence number in the dimmers array (group ID)
     void setSequenceNumber(byte value);
     byte getSequenceNumber() const;
 
-    void setEEPROMOffset(byte value);
-    byte getEEPROMOffset() const;
+    // MySensors message interface
+    static void setMyMessageAccessor(MyMessage* myMessageAccessor);
+    static MyMessage* getMyMessageAccessor();
 
-    void setMySensorsOffset(byte value);
-    byte getMySensorsOffset() const;
+    // Dimmers offset (as a group) in the EEPROM
+    static void setEEPROMOffset(byte value);
+    static byte getEEPROMOffset();
 
-    byte getValueRaw() const;
+    // Dimmers offset (as a group) in the MySensors GateWay
+    static void setMySensorsOffset(byte value);
+    static byte getMySensorsOffset();
 
 private:
     void CopyFrom(const DimmerI2C& other);
@@ -65,13 +73,8 @@ private:
     byte _slaveI2CAddress;
 
     // this identifier helps to hide implementation of re/storing an array of objects to/from EEPROM
+    // and comunicate with MySensors controller
     byte _sequenceNumber;
-    // this identifier is the start address in the EEPROM to store the data
-    byte _eepromOffset;
-    // this identifier is the sensors type offset in MySensors register
-    byte _mySensorsOffset;
-    // reference to global message to controller, used to construct messages "on the fly"
-    MyMessage* _myMessageAccessor;
 };
 
 #endif // DIMMERI2C_H_

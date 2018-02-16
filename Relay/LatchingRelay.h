@@ -22,8 +22,8 @@ public:
 
 protected:
     // relay type dependant methods
-    virtual void On();
-    virtual void Off();
+    virtual void On(bool store);
+    virtual void Off(bool store);
 };
 
 #endif // LatchingRelay_H_

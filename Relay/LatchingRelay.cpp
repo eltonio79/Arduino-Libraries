@@ -5,7 +5,7 @@
 const byte LatchingRelay::_switchingOffsetTimeMillis = 15;
 
 LatchingRelay::LatchingRelay(PCF8574& expander, byte pinA, byte pinB) :
-RelayEx(), // better to call it instead of implicite call..
+RelayEx(0), // better to call it instead of implicite call..
 _expander(expander),
 _pinA(pinA),
 _pinB(pinB)
@@ -41,7 +41,7 @@ LatchingRelay& LatchingRelay::operator=(const LatchingRelay& other)
     return *this;
 }
 
-void LatchingRelay::On()
+void LatchingRelay::On(bool store)
 {
     _expander.write(_pinA, LOW);
     _expander.write(_pinB, HIGH);
@@ -49,10 +49,10 @@ void LatchingRelay::On()
     _expander.write(_pinA, LOW);
     _expander.write(_pinB, LOW);
 
-    RelayEx::On();
+    RelayEx::On(store);
 }
 
-void LatchingRelay::Off()
+void LatchingRelay::Off(bool store)
 {
     _expander.write(_pinA, HIGH);
     _expander.write(_pinB, LOW);
@@ -60,5 +60,5 @@ void LatchingRelay::Off()
     _expander.write(_pinA, LOW);
     _expander.write(_pinB, LOW);
 
-    RelayEx::Off();
+    RelayEx::Off(store);
 }

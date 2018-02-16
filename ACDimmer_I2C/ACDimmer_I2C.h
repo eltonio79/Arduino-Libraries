@@ -28,7 +28,7 @@ public:
     // #param value ( 0 - 100 % )
     void setValue(byte value, bool store = false);
     byte getValue() const;
-    byte getValueRaw() const;
+    unsigned int getValueRaw() const;
 
     void setMinimumValue(byte value);
     byte getMinimumValue() const;
@@ -73,7 +73,7 @@ public:
     void update();
 
 private:
-    void sendMessage_I2C(byte message);
+    void sendMessage_I2C(unsigned int message);
     void sendMessage_Controller(byte type, byte command);
 
     void CopyFrom(const ACDimmer_I2C& other);

@@ -2,6 +2,8 @@
 #include <Wire.h>
 #include <Streaming.h>
 
+#define UNUSED(argument) (void) (argument)
+
 // Implementation of DimmerEx class
 
 byte DimmerEx::VALUE_MIN = 0;
@@ -17,7 +19,9 @@ DimmerEx::DimmerEx() :
     _fadeToValue(_value),
     _fadeDuration(DimmerEx::FADE_DURATION_OFF),
     _fadeInterval(0),
-    _fadeLastStepTime(0)
+    _fadeLastStepTime(0),
+    _store(false),
+    _sequenceNumber(0)
 {
 }
 
@@ -49,10 +53,14 @@ void DimmerEx::CopyFrom(const DimmerEx& other)
     _fadeDuration = other._fadeDuration;
     _fadeInterval = other._fadeInterval;
     _fadeLastStepTime = other._fadeLastStepTime;
+    _store = other._store;
+    _sequenceNumber = other._sequenceNumber;
 }
 
 void DimmerEx::setValue(byte value, bool store)
 {
+    UNUSED(store);
+
     // sanity checks
     if (value > DimmerEx::VALUE_MAX)
         value = DimmerEx::VALUE_MAX;
@@ -63,7 +71,7 @@ void DimmerEx::setValue(byte value, bool store)
 
     // last value should be always in the dimming range excluding ON and OFF states
     // it is used for switching it "back" to last known positive DIMMING state
-    if (store && (_value > DimmerEx::VALUE_MIN) && (_value < DimmerEx::VALUE_MAX))
+    if (!isFading() && (_value > DimmerEx::VALUE_MIN) && (_value < DimmerEx::VALUE_MAX))
         _lastValue = _value;
 
     _value = value;
@@ -74,45 +82,50 @@ byte DimmerEx::getValue() const
     return _value;
 }
 
+unsigned int DimmerEx::getValueRaw() const
+{
+    return static_cast<unsigned int>(getValue());
+}
+
 bool DimmerEx::isSwitchedOn() const
 {
     return _value > DimmerEx::VALUE_MIN;
 }
 
-void DimmerEx::switchOn()
+void DimmerEx::switchOn(bool store)
 {
     stopFade();
-    setValue(DimmerEx::VALUE_MAX, true);
+    setValue(DimmerEx::VALUE_MAX, store);
 };
 
-void DimmerEx::switchLast()
+void DimmerEx::switchLast(bool store)
 {
     stopFade();
-    setValue(_lastValue, true);
+    setValue(_lastValue, store);
 };
 
-void DimmerEx::switchOff()
+void DimmerEx::switchOff(bool store)
 {
     stopFade();
-    setValue(DimmerEx::VALUE_MIN, true);
+    setValue(DimmerEx::VALUE_MIN, store);
 };
 
-void DimmerEx::switchToggle(bool threeStateMode /* = false */)
+void DimmerEx::switchToggle(bool threeStateMode, bool store)
 {
     if (_value == DimmerEx::VALUE_MAX || (_value > DimmerEx::VALUE_MIN && !threeStateMode))
-        switchOff();
+        switchOff(store);
     else if (_value == DimmerEx::VALUE_MIN && threeStateMode)
-        switchLast();
+        switchLast(store);
     else
-        switchOn();
+        switchOn(store);
 };
 
-void DimmerEx::switchToggleOn()
+void DimmerEx::switchToggleOn(bool store)
 {
     if (_value == DimmerEx::VALUE_MAX)
-        switchLast();
+        switchLast(store);
     else
-        switchOn();
+        switchOn(store);
 }
 
 bool DimmerEx::isFading() const
@@ -120,32 +133,27 @@ bool DimmerEx::isFading() const
     return _fadeDuration > DimmerEx::FADE_DURATION_OFF;
 }
 
-void DimmerEx::startFade(byte fadeToValue, unsigned long fadeDuration)
+void DimmerEx::startFade(byte fadeToValue, unsigned long fadeDuration, bool store)
 {
     // sanity checks
     if (fadeToValue > DimmerEx::VALUE_MAX)
         fadeToValue = DimmerEx::VALUE_MAX;
 
+    if (_value == fadeToValue) // light value hasn't changed
+        return;
+
     if (fadeDuration > DimmerEx::FADE_DURATION_MAX)
         fadeDuration = DimmerEx::FADE_DURATION_MAX;
 
-    // light value hasn't changed
-    if (_value == fadeToValue)
+    if (fadeDuration <= DimmerEx::FADE_DURATION_MIN)
         return;
 
     stopFade();
 
-    // fade time is to short - e.g. assume some is turning the encoder knob ?
-    if (fadeDuration <= DimmerEx::FADE_DURATION_MIN)
-    {
-        // do nothing and just returning here will be better?
-        setValue(fadeToValue, false);
-        return;
-    }
-
     _fadeDuration = fadeDuration;
     _fadeFromValue = _value;
     _fadeToValue = fadeToValue;
+    _store = store;
 
     // Figure out what the interval should be so that we're chaning the color by at least 1 each cycle
     // Minimum fade interval is FADE_DURATION_MIN
@@ -194,7 +202,8 @@ void DimmerEx::update()
     if (percent >= 1)
     {
         stopFade();
-        setValue(_fadeToValue, false);
+        setValue(_fadeToValue, _store);
+        _store = false;
         return;
     }
 
@@ -209,4 +218,24 @@ void DimmerEx::update()
     _fadeLastStepTime = millis();
 
     return;
+}
+
+void DimmerEx::setSequenceNumber(byte value)
+{
+    _sequenceNumber = value;
+};
+
+byte DimmerEx::getSequenceNumber() const
+{
+    return _sequenceNumber;
+};
+
+void DimmerEx::readEEPROM(bool notify)
+{
+    UNUSED(notify);
+}
+
+void DimmerEx::saveEEPROM(bool notify)
+{
+    UNUSED(notify);
 }

@@ -104,10 +104,10 @@ byte ACDimmer_I2C::getValue() const
     return _value;
 };
 
-byte ACDimmer_I2C::getValueRaw() const
+unsigned int ACDimmer_I2C::getValueRaw() const
 {
     // calculate RAW dimming value
-    byte valueRaw = 0;
+    unsigned int valueRaw = 0;
 
     if (_value == 0)
     {
@@ -403,11 +403,11 @@ void ACDimmer_I2C::update()
     return;
 }
 
-void ACDimmer_I2C::sendMessage_I2C(byte command)
+void ACDimmer_I2C::sendMessage_I2C(unsigned int message)
 {
     // send RAW dimming value through I2C to slave AC dimmer
     Wire.beginTransmission(_slaveI2CAddress);
-    Wire.write(command);
+    Wire.write(message);
     Wire.endTransmission();
 }
 
