@@ -64,13 +64,14 @@ void DimmerEx::setValue(byte value, bool store)
     // sanity checks
     if (value > DimmerEx::VALUE_MAX)
         value = DimmerEx::VALUE_MAX;
+    if (value < DimmerEx::VALUE_MIN)
+        value = DimmerEx::VALUE_MIN;
 
     // light value hasn't changed
     if (_value == value)
         return;
 
     // last value should be always in the dimming range excluding ON and OFF states
-    // it is used for switching it "back" to last known positive DIMMING state
     if (!isFading() && (_value > DimmerEx::VALUE_MIN) && (_value < DimmerEx::VALUE_MAX))
         _lastValue = _value;
 
@@ -195,7 +196,7 @@ void DimmerEx::update()
     if (timeDiff < _fadeInterval)
         return;
 
-    // How far along have we gone since last update
+    // How far along have we gone since last update (0 - 1)
     float percent = static_cast<float>(timeDiff) / static_cast<float>(_fadeDuration);
 
     // We've hit 100 % (percent == 1), set lights level to the final value
