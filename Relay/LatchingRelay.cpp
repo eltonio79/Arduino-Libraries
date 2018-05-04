@@ -10,9 +10,7 @@ _expander(expander),
 _pinA(pinA),
 _pinB(pinB)
 {
-    // we want to have neutral state of the pins by default (LOW, LOW)
-    _expander.write(_pinA, LOW);
-    _expander.write(_pinB, LOW);
+    // nie dzia³a tu _expander.write(...) - wiesza MySensors / system !
 }
 
 LatchingRelay::LatchingRelay(const LatchingRelay& other) :

@@ -42,12 +42,12 @@ void RelayEx::CopyFrom(const RelayEx& other)
 void RelayEx::setSequenceNumber(byte value)
 {
     _sequenceNumber = value;
-};
+}
 
 byte RelayEx::getSequenceNumber() const
 {
     return _sequenceNumber;
-};
+}
 
 void RelayEx::readEEPROM(bool notify)
 {
@@ -119,12 +119,12 @@ MyMessage* RelayEx::getMyMessageAccessor()
 void RelayEx::setEEPROMOffset(byte value)
 {
     RelayEx::EEPROM_OFFSET = value;
-};
+}
 
 byte RelayEx::getEEPROMOffset()
 {
     return RelayEx::EEPROM_OFFSET;
-};
+}
 
 void RelayEx::setMySensorsOffset(byte value)
 {
@@ -134,4 +134,4 @@ void RelayEx::setMySensorsOffset(byte value)
 byte RelayEx::getMySensorsOffset()
 {
     return RelayEx::MYSENSORS_OFFSET;
-};
+}

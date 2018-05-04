@@ -30,19 +30,20 @@ IPAddress _brokerIp(MY_CONTROLLER_IP_ADDRESS);
 IPAddress _MQTT_clientIp(MY_IP_ADDRESS);
 #if defined(MY_IP_GATEWAY_ADDRESS)
 IPAddress _gatewayIp(MY_IP_GATEWAY_ADDRESS);
-#elif defined(MY_GATEWAY_ESP8266) /* Elif part of MY_IP_GATEWAY_ADDRESS */
+#elif defined(MY_GATEWAY_ESP8266) || defined(MY_GATEWAY_ESP32)
 // Assume the gateway will be the machine on the same network as the local IP
 // but with last octet being '1'
 IPAddress _gatewayIp(_MQTT_clientIp[0], _MQTT_clientIp[1], _MQTT_clientIp[2], 1);
 #endif /* End of MY_IP_GATEWAY_ADDRESS */
+
 #if defined(MY_IP_SUBNET_ADDRESS)
 IPAddress _subnetIp(MY_IP_SUBNET_ADDRESS);
-#elif defined(MY_GATEWAY_ESP8266) /* Elif part of MY_IP_SUBNET_ADDRESS */
+#elif defined(MY_GATEWAY_ESP8266) || defined(MY_GATEWAY_ESP32)
 IPAddress _subnetIp(255, 255, 255, 0);
 #endif /* End of MY_IP_SUBNET_ADDRESS */
 #endif /* End of MY_IP_ADDRESS */
 
-#if defined(MY_GATEWAY_ESP8266)
+#if defined(MY_GATEWAY_ESP8266)  || defined(MY_GATEWAY_ESP32)
 #define EthernetClient WiFiClient
 #elif defined(MY_GATEWAY_LINUX)
 // Nothing to do here
@@ -50,8 +51,24 @@ IPAddress _subnetIp(255, 255, 255, 0);
 uint8_t _MQTT_clientMAC[] = { MY_MAC_ADDRESS };
 #endif /* End of MY_GATEWAY_ESP8266 */
 
+#if defined(MY_GATEWAY_TINYGSM)
+#if defined(MY_GSM_RX) && defined(MY_GSM_TX)
+SoftwareSerial SerialAT(MY_GSM_RX, MY_GSM_TX);
+#endif
+static TinyGsm modem(SerialAT);
+static TinyGsmClient _MQTT_gsmClient(modem);
+static PubSubClient _MQTT_client(_MQTT_gsmClient);
+#if defined(MY_GSM_BAUDRATE)
+uint32_t rate = MY_GSM_BAUDRATE;
+#else /* Else part of MY_GSM_BAUDRATE */
+uint32_t rate = 0;
+#endif /* End of MY_GSM_BAUDRATE */
+#else /* Else part of MY_GATEWAY_TINYGSM */
 static EthernetClient _MQTT_ethClient;
 static PubSubClient _MQTT_client(_MQTT_ethClient);
+#endif /* End of MY_GATEWAY_TINYGSM */
+
+
 static bool _MQTT_connecting = true;
 static bool _MQTT_available = false;
 static MyMessage _MQTT_msg;
@@ -104,7 +121,7 @@ bool reconnectMQTT(void)
 
 bool gatewayTransportConnect(void)
 {
-#if defined(MY_GATEWAY_ESP8266)
+#if defined(MY_GATEWAY_ESP8266) || defined(MY_GATEWAY_ESP32)
 	while (WiFi.status() != WL_CONNECTED) {
 		wait(500);
 		GATEWAY_DEBUG(PSTR("GWT:TPC:CONNECTING...\n"));
@@ -114,6 +131,8 @@ bool gatewayTransportConnect(void)
 #if defined(MY_IP_ADDRESS)
 	_MQTT_ethClient.bind(_MQTT_clientIp);
 #endif /* End of MY_IP_ADDRESS */
+#elif defined(MY_GATEWAY_TINYGSM) /* Elif part of MY_GATEWAY_ESP8266 */
+	GATEWAY_DEBUG(PSTR("GWT:TPC:IP=%s\n"), modem.getLocalIP().c_str());
 #else /* Else part of MY_GATEWAY_ESP8266 */
 #if defined(MY_IP_ADDRESS)
 	Ethernet.begin(_MQTT_clientMAC, _MQTT_clientIp);
@@ -137,6 +156,46 @@ bool gatewayTransportConnect(void)
 bool gatewayTransportInit(void)
 {
 	_MQTT_connecting = true;
+
+#if defined(MY_GATEWAY_TINYGSM)
+
+#if !defined(MY_GSM_BAUDRATE)
+	rate = TinyGsmAutoBaud(SerialAT);
+#endif /* End of MY_GSM_BAUDRATE */
+
+	SerialAT.begin(rate);
+	delay(3000);
+
+	modem.restart();
+
+#if defined(MY_GSM_PIN) && !defined(TINY_GSM_MODEM_ESP8266)
+	modem.simUnlock(MY_GSM_PIN);
+#endif /* End of MY_GSM_PIN */
+
+#ifndef TINY_GSM_MODEM_ESP8266
+	if (!modem.waitForNetwork()) {
+		GATEWAY_DEBUG(PSTR("!GWT:TIN:ETH FAIL\n"));
+		while (true);
+	}
+	GATEWAY_DEBUG(PSTR("GWT:TIN:ETH OK\n"));
+
+	if (!modem.gprsConnect(MY_GSM_APN, MY_GSM_USR, MY_GSM_PSW)) {
+		GATEWAY_DEBUG(PSTR("!GWT:TIN:ETH FAIL\n"));
+		while (true);
+	}
+	GATEWAY_DEBUG(PSTR("GWT:TIN:ETH OK\n"));
+	delay(1000);
+#else /* Else part of TINY_GSM_MODEM_ESP8266 */
+	if (!modem.networkConnect(MY_GSM_SSID, MY_GSM_PSW)) {
+		GATEWAY_DEBUG(PSTR("!GWT:TIN:ETH FAIL\n"));
+		while (true);
+	}
+	GATEWAY_DEBUG(PSTR("GWT:TIN:ETH OK\n"));
+	delay(1000);
+#endif /* End of TINY_GSM_MODEM_ESP8266 */
+
+#endif /* End of MY_GATEWAY_TINYGSM */
+
 #if defined(MY_CONTROLLER_IP_ADDRESS)
 	_MQTT_client.setServer(_brokerIp, MY_PORT);
 #else
@@ -158,7 +217,20 @@ bool gatewayTransportInit(void)
 #define MY_ESP8266_BSSID NULL
 #endif
 	(void)WiFi.begin(MY_ESP8266_SSID, MY_ESP8266_PASSWORD, 0, MY_ESP8266_BSSID);
-#endif /* End of MY_GATEWAY_ESP8266 */
+#elif defined(MY_GATEWAY_ESP32)
+	// Turn off access point
+	WiFi.mode(WIFI_STA);
+#if defined(MY_ESP32_HOSTNAME)
+	WiFi.setHostname(MY_ESP32_HOSTNAME);
+#endif /* End of MY_ESP32_HOSTNAME */
+#if defined(MY_IP_ADDRESS)
+	WiFi.config(_MQTT_clientIp, _gatewayIp, _subnetIp);
+#endif /* End of MY_IP_ADDRESS */
+#ifndef MY_ESP32_BSSID
+#define MY_ESP32_BSSID NULL
+#endif
+	(void)WiFi.begin(MY_ESP32_SSID, MY_ESP32_PASSWORD, 0, MY_ESP32_BSSID);
+#endif
 
 	gatewayTransportConnect();
 
