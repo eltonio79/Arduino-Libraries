@@ -2,7 +2,6 @@
 #include <..\MySensors\core\MyMessage.h>
 #include <..\MySensors\core\MySensorsCore.h>
 
-byte RelayEx::EEPROM_OFFSET = 0;                    // this identifier is the start address in the EEPROM to store the data
 byte RelayEx::MYSENSORS_OFFSET = 0;                 // this identifier is the sensors type offset in MySensors register
 MyMessage* RelayEx::MYMESSAGE_ACCESSOR = nullptr;   // reference to global message to controller, used to construct messages "on the fly"
 
@@ -49,30 +48,6 @@ byte RelayEx::getSequenceNumber() const
     return _sequenceNumber;
 }
 
-void RelayEx::readEEPROM(bool notify)
-{
-    _isOn = static_cast<bool>(loadState(RelayEx::EEPROM_OFFSET + _sequenceNumber));
-
-    // Serial << "Read sn." << _sequenceNumber <<  " address: " << RelayEx::EEPROM_OFFSET + _sequenceNumber << " _value = " << _value << endln;
-
-    // check how works receiving last state from the controller instead of EEPROM ( ... request(i + 1, V_STATUS); ...)
-
-    // switch the relay level to last known value
-    _isOn ? switchOn(false) : switchOff(false);
-
-    if (notify)
-        sendMessage_Controller(V_STATUS, _isOn); // send actual relay status to controller
-}
-
-void RelayEx::saveEEPROM(bool notify)
-{
-    // save actual relay state to the EEPROM
-    saveState(RelayEx::EEPROM_OFFSET + _sequenceNumber, static_cast<int>(_isOn));
-
-    if (notify)
-        sendMessage_Controller(V_STATUS, _isOn); // send actual relay status to controller
-}
-
 void RelayEx::sendMessage_Controller(byte type, byte command)
 {
     // send status to controller (if RelayEx::MYMESSAGE_ACCESSOR was set)
@@ -80,28 +55,16 @@ void RelayEx::sendMessage_Controller(byte type, byte command)
         send(RelayEx::MYMESSAGE_ACCESSOR->setSensor(RelayEx::MYSENSORS_OFFSET + _sequenceNumber + 1).setType(type).set(command));
 }
 
-void RelayEx::On(bool store)
+void RelayEx::On()
 {
     // send actual relay status to controller
     sendMessage_Controller(V_STATUS, _isOn);
-
-    if (store)
-    {
-        // save actual relay state to the EEPROM
-        saveState(RelayEx::EEPROM_OFFSET + _sequenceNumber, static_cast<int>(_isOn));
-    }
 }
 
-void RelayEx::Off(bool store)
+void RelayEx::Off()
 {
     // send actual relay status to controller
     sendMessage_Controller(V_STATUS, _isOn);
-
-    if (store)
-    {
-        // save actual relay state to the EEPROM
-        saveState(RelayEx::EEPROM_OFFSET + _sequenceNumber, static_cast<int>(_isOn));
-    }
 }
 
 // Static member functions
@@ -114,16 +77,6 @@ void RelayEx::setMyMessageAccessor(MyMessage* myMessageAccessor)
 MyMessage* RelayEx::getMyMessageAccessor()
 {
     return RelayEx::MYMESSAGE_ACCESSOR;
-}
-
-void RelayEx::setEEPROMOffset(byte value)
-{
-    RelayEx::EEPROM_OFFSET = value;
-}
-
-byte RelayEx::getEEPROMOffset()
-{
-    return RelayEx::EEPROM_OFFSET;
 }
 
 void RelayEx::setMySensorsOffset(byte value)

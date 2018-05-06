@@ -20,7 +20,6 @@ DimmerEx::DimmerEx() :
     _fadeDuration(DimmerEx::FADE_DURATION_OFF),
     _fadeInterval(0),
     _fadeLastStepTime(0),
-    _store(false),
     _sequenceNumber(0)
 {
 }
@@ -53,14 +52,11 @@ void DimmerEx::CopyFrom(const DimmerEx& other)
     _fadeDuration = other._fadeDuration;
     _fadeInterval = other._fadeInterval;
     _fadeLastStepTime = other._fadeLastStepTime;
-    _store = other._store;
     _sequenceNumber = other._sequenceNumber;
 }
 
-void DimmerEx::setValue(byte value, bool store)
+void DimmerEx::setValue(byte value)
 {
-    UNUSED(store);
-
     // sanity checks
     if (value > DimmerEx::VALUE_MAX)
         value = DimmerEx::VALUE_MAX;
@@ -93,40 +89,40 @@ bool DimmerEx::isSwitchedOn() const
     return _value > DimmerEx::VALUE_MIN;
 }
 
-void DimmerEx::switchOn(bool store)
+void DimmerEx::switchOn()
 {
     stopFade();
-    setValue(DimmerEx::VALUE_MAX, store);
+    setValue(DimmerEx::VALUE_MAX);
 };
 
-void DimmerEx::switchLast(bool store)
+void DimmerEx::switchLast()
 {
     stopFade();
-    setValue(_lastValue, store);
+    setValue(_lastValue);
 };
 
-void DimmerEx::switchOff(bool store)
+void DimmerEx::switchOff()
 {
     stopFade();
-    setValue(DimmerEx::VALUE_MIN, store);
+    setValue(DimmerEx::VALUE_MIN);
 };
 
-void DimmerEx::switchToggle(bool threeStateMode, bool store)
+void DimmerEx::switchToggle(bool threeStateMode)
 {
     if (_value == DimmerEx::VALUE_MAX || (_value > DimmerEx::VALUE_MIN && !threeStateMode))
-        switchOff(store);
+        switchOff();
     else if (_value == DimmerEx::VALUE_MIN && threeStateMode)
-        switchLast(store);
+        switchLast();
     else
-        switchOn(store);
+        switchOn();
 };
 
-void DimmerEx::switchToggleOn(bool store)
+void DimmerEx::switchToggleOn()
 {
     if (_value == DimmerEx::VALUE_MAX)
-        switchLast(store);
+        switchLast();
     else
-        switchOn(store);
+        switchOn();
 }
 
 bool DimmerEx::isFading() const
@@ -134,7 +130,7 @@ bool DimmerEx::isFading() const
     return _fadeDuration > DimmerEx::FADE_DURATION_OFF;
 }
 
-void DimmerEx::startFade(byte fadeToValue, unsigned long fadeDuration, bool store)
+void DimmerEx::startFade(byte fadeToValue, unsigned long fadeDuration)
 {
     // sanity checks
     if (fadeToValue > DimmerEx::VALUE_MAX)
@@ -154,7 +150,6 @@ void DimmerEx::startFade(byte fadeToValue, unsigned long fadeDuration, bool stor
     _fadeDuration = fadeDuration;
     _fadeFromValue = _value;
     _fadeToValue = fadeToValue;
-    _store = store;
 
     // Figure out what the interval should be so that we're chaning the color by at least 1 each cycle
     // Minimum fade interval is FADE_DURATION_MIN
@@ -203,8 +198,7 @@ void DimmerEx::update()
     if (percent >= 1)
     {
         stopFade();
-        setValue(_fadeToValue, _store);
-        _store = false;
+        setValue(_fadeToValue);
         return;
     }
 
@@ -212,7 +206,7 @@ void DimmerEx::update()
     float fadeDiff = _fadeToValue - _value;
     int increment = round(fadeDiff * percent);
 
-    setValue(_value + increment, false);
+    setValue(_value + increment);
 
     // Update time and finish
     _fadeDuration -= timeDiff;
@@ -230,13 +224,3 @@ byte DimmerEx::getSequenceNumber() const
 {
     return _sequenceNumber;
 };
-
-void DimmerEx::readEEPROM(bool notify)
-{
-    UNUSED(notify);
-}
-
-void DimmerEx::saveEEPROM(bool notify)
-{
-    UNUSED(notify);
-}

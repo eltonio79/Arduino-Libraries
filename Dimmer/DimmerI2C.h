@@ -9,11 +9,9 @@ class MyMessage;
 class DimmerI2C : public DimmerEx
 {
 private:
-    static byte EEPROM_DATA_SIZE;           // Size of the data for DimmerI2C class to store in the EEPROM
     static byte RAW_VALUE_MIN;              // minimum RAW value (normally 128)
     static byte RAW_VALUE_MAX;              // minimum RAW value (normally 0)
 
-    static byte EEPROM_OFFSET;              // this identifier is the start address in the EEPROM to store the data
     static byte MYSENSORS_OFFSET;           // this identifier is the sensors type offset in MySensors register
     static MyMessage* MYMESSAGE_ACCESSOR;   // reference to global message to controller, used to construct messages "on the fly"
 
@@ -26,23 +24,19 @@ public:
     virtual ~DimmerI2C();
     DimmerI2C& operator=(const DimmerI2C& other);
 
-    // EEPROM access methods
-    virtual void readEEPROM(bool notify);
-    virtual void saveEEPROM(bool notify);
-
     // Member setters / getters
-    virtual void setValue(byte value, bool store);
+    virtual void setValue(byte value);
 
     // Calculates RAW dimming value (acceptable by hardware, derived dimmer)
     virtual unsigned int getValueRaw() const;
 
-    void setMinimumValue(byte value, bool store);
+    void setMinimumValue(byte value);
     byte getMinimumValue() const;
 
-    void setMaximumValue(byte value, bool store);
+    void setMaximumValue(byte value);
     byte getMaximumValue() const;
 
-    void setSlaveI2CAddress(byte value, bool store);
+    void setSlaveI2CAddress(byte value);
     byte getSlaveI2CAddress() const;
 
     // Sequence number in the dimmers array (group ID)
@@ -52,10 +46,6 @@ public:
     // MySensors message interface
     static void setMyMessageAccessor(MyMessage* myMessageAccessor);
     static MyMessage* getMyMessageAccessor();
-
-    // Dimmers offset (as a group) in the EEPROM
-    static void setEEPROMOffset(byte value);
-    static byte getEEPROMOffset();
 
     // Dimmers offset (as a group) in the MySensors GateWay
     static void setMySensorsOffset(byte value);
@@ -67,13 +57,11 @@ private:
     void sendMessage_I2C(byte message);
     void sendMessage_Controller(byte type, byte command);
 
-    // Properties stored inside EEPROM
     byte _minimumValue;
     byte _maximumValue;
     byte _slaveI2CAddress;
 
-    // this identifier helps to hide implementation of re/storing an array of objects to/from EEPROM
-    // and comunicate with MySensors controller
+    // this identifier helps to hide implementation of comunicate with MySensors controller
     byte _sequenceNumber;
 };
 

@@ -39,7 +39,7 @@ LatchingRelay& LatchingRelay::operator=(const LatchingRelay& other)
     return *this;
 }
 
-void LatchingRelay::On(bool store)
+void LatchingRelay::On()
 {
     _expander.write(_pinA, LOW);
     _expander.write(_pinB, HIGH);
@@ -47,10 +47,10 @@ void LatchingRelay::On(bool store)
     _expander.write(_pinA, LOW);
     _expander.write(_pinB, LOW);
 
-    RelayEx::On(store);
+    RelayEx::On();
 }
 
-void LatchingRelay::Off(bool store)
+void LatchingRelay::Off()
 {
     _expander.write(_pinA, HIGH);
     _expander.write(_pinB, LOW);
@@ -58,5 +58,5 @@ void LatchingRelay::Off(bool store)
     _expander.write(_pinA, LOW);
     _expander.write(_pinB, LOW);
 
-    RelayEx::Off(store);
+    RelayEx::Off();
 }

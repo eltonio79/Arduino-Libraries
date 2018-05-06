@@ -41,12 +41,8 @@ public:
     virtual ~DimmerEx();
     DimmerEx& operator=(const DimmerEx& other);
 
-    // EEPROM access methods
-    virtual void readEEPROM(bool notify);
-    virtual void saveEEPROM(bool notify);
-
     // Member setters / getters
-    virtual void setValue(byte value, bool store); // acceted values from 0 to 100 (percent of the light)
+    virtual void setValue(byte value); // acceted values from 0 to 100 (percent of the light)
     byte getValue() const;
 
     // Calculates RAW dimming value (acceptable by hardware, derived dimmer)
@@ -55,17 +51,17 @@ public:
     // Three-state functionality
     bool isSwitchedOn() const;
 
-    void switchOn(bool store);
-    void switchToggleOn(bool store);
-    void switchLast(bool store);
-    void switchOff(bool store);
-    void switchToggle(bool threeStateMode, bool store);
+    void switchOn();
+    void switchToggleOn();
+    void switchLast();
+    void switchOff();
+    void switchToggle(bool threeStateMode);
 
     // Dimming functionality
     bool isFading() const;
     byte getFadeProgress() const; // returns current dimming progress in percentage ( 0 - 100 % )
 
-    void startFade(byte fadeValue, unsigned long duration, bool store);
+    void startFade(byte fadeValue, unsigned long duration);
     void stopFade();
 
     // This function has to be called in every processor tick / in the loop(s).
@@ -89,8 +85,7 @@ protected:
     unsigned long _fadeDuration;
     unsigned long _fadeInterval;
     unsigned long _fadeLastStepTime;
-    bool _store;
-    // this identifier helps to hide implementation of re/storing an array of objects to/from EEPROM and comunicate with external things (MySensors)
+    // this identifier helps to hide implementation of comunicate with external things (MySensors)
     byte _sequenceNumber;
 };
 

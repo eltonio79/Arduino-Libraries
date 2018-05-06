@@ -5,11 +5,9 @@
 
 // Implementation of DimmerTLC class
 
-byte DimmerTLC::EEPROM_DATA_SIZE = 3; // number of members stored in the EEPROM
 unsigned int DimmerTLC::RAW_VALUE_MIN = 0;    // full OFF
 unsigned int DimmerTLC::RAW_VALUE_MAX = 4095; // full ON
 
-byte DimmerTLC::EEPROM_OFFSET = 0;                    // this identifier is the start address in the EEPROM to store the data
 byte DimmerTLC::MYSENSORS_OFFSET = 0;                 // this identifier is the sensors type offset in MySensors register
 MyMessage* DimmerTLC::MYMESSAGE_ACCESSOR = nullptr;   // reference to global message to controller, used to construct messages "on the fly"
 
@@ -46,49 +44,10 @@ void DimmerTLC::CopyFrom(const DimmerTLC& other)
     _pin = other._pin;
 }
 
-void DimmerTLC::readEEPROM(bool notify)
-{
-    _value = loadState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 0);
-    _lastValue = loadState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 1);
-    _pin = loadState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 2);
-
-    // Serial << "Read sn." << _sequenceNumber <<  " address: " << DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 0 << " _value = " << _value << endln;
-    // Serial << "Read sn." << _sequenceNumber <<  " address: " << DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 1 << " _lastValue = " << _lastValue << endln;
-    // Serial << "Read sn." << _sequenceNumber <<  " address: " << DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 2 << " _pin = " << _pin << endln;
-    // Serial << endln;
-
-    // Sanity checks (in case when EEPROM dies..)
-    if (_value > DimmerEx::VALUE_MAX)
-        _value = DimmerEx::VALUE_MAX;
-
-    if (_lastValue > DimmerEx::VALUE_MAX)
-        _lastValue = DimmerEx::VALUE_MAX;
-
-    _fadeFromValue = _value;
-    _fadeToValue = _value;
-
-    // real, hardware change of setValue state (method can be overriden in derived classes)
-    Tlc.set(_pin, getValueRaw());
-    Tlc.update();
-
-    if (notify)
-        sendMessage_Controller(V_PERCENTAGE, getValue()); // send dimmer initial value to the controller
-}
-
-void DimmerTLC::saveEEPROM(bool notify)
-{
-    saveState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 0, _value);
-    saveState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 1, _lastValue);
-    saveState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 2, _pin);
-
-    if (notify)
-        sendMessage_Controller(V_PERCENTAGE, getValue()); // send dimmer initial value to the controller
-}
-
-void DimmerTLC::setValue(byte value, bool store)
+void DimmerTLC::setValue(byte value)
 {
     // Sets value with sanity check (%0 - 100%)
-    DimmerEx::setValue(value, store);
+    DimmerEx::setValue(value);
 
     // real, hardware change of setValue state (method can be overriden in derived classes)
     // zamiast funkcji map u¿yj tabeli gamma 10-bit z pliku Gamma_LED.h
@@ -97,13 +56,6 @@ void DimmerTLC::setValue(byte value, bool store)
 
     // update value status inside controller
     sendMessage_Controller(V_PERCENTAGE, getValue());
-
-    if (store)
-    {
-        // save states to EEPROM and send actual dimming level to the controller
-        saveState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 0, _value);
-        saveState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 1, _lastValue);
-    }
 }
 
 unsigned int DimmerTLC::getValueRaw() const
@@ -112,18 +64,9 @@ unsigned int DimmerTLC::getValueRaw() const
     return map(_value, DimmerEx::VALUE_MIN, DimmerEx::VALUE_MAX, DimmerTLC::RAW_VALUE_MIN, DimmerTLC::RAW_VALUE_MAX);
 }
 
-void DimmerTLC::setPin(byte pin, bool store)
+void DimmerTLC::setPin(byte pin)
 {
     _pin = pin;
-
-    // update value status inside controller (maby not needed here?)
-    sendMessage_Controller(V_PERCENTAGE, getValue());
-
-    if (store)
-    {
-        // save states to EEPROM and send actual dimming level to the controller
-        saveState(DimmerTLC::EEPROM_OFFSET + DimmerTLC::EEPROM_DATA_SIZE * _sequenceNumber + 2, _pin);
-    }
 }
 
 byte DimmerTLC::getPin() const
@@ -148,16 +91,6 @@ void DimmerTLC::setMyMessageAccessor(MyMessage* myMessageAccessor)
 MyMessage* DimmerTLC::getMyMessageAccessor()
 {
     return DimmerTLC::MYMESSAGE_ACCESSOR;
-};
-
-void DimmerTLC::setEEPROMOffset(byte value)
-{
-    DimmerTLC::EEPROM_OFFSET = value;
-};
-
-byte DimmerTLC::getEEPROMOffset()
-{
-    return DimmerTLC::EEPROM_OFFSET;
 };
 
 void DimmerTLC::setMySensorsOffset(byte value)
