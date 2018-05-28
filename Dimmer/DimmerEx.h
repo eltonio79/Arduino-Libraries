@@ -69,8 +69,8 @@ public:
     void update();
 
     // Sequence number in the dimmers array (group ID)
-    void setSequenceNumber(byte value);
-    byte getSequenceNumber() const;
+    virtual void setSequenceNumber(byte value);
+    virtual byte getSequenceNumber() const;
 
 private:
     void CopyFrom(const DimmerEx& other);

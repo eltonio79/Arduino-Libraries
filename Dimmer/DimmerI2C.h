@@ -39,10 +39,6 @@ public:
     void setSlaveI2CAddress(byte value);
     byte getSlaveI2CAddress() const;
 
-    // Sequence number in the dimmers array (group ID)
-    void setSequenceNumber(byte value);
-    byte getSequenceNumber() const;
-
     // MySensors message interface
     static void setMyMessageAccessor(MyMessage* myMessageAccessor);
     static MyMessage* getMyMessageAccessor();
@@ -60,9 +56,6 @@ private:
     byte _minimumValue;
     byte _maximumValue;
     byte _slaveI2CAddress;
-
-    // this identifier helps to hide implementation of comunicate with MySensors controller
-    byte _sequenceNumber;
 };
 
 #endif // DIMMERI2C_H_
