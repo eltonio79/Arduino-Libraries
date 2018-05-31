@@ -1,6 +1,5 @@
 #include "DimmerEx.h"
 #include <Wire.h>
-#include <Streaming.h>
 
 #define UNUSED(argument) (void) (argument)
 
@@ -9,8 +8,8 @@
 byte DimmerEx::VALUE_MIN = 0;
 byte DimmerEx::VALUE_MAX = 100;
 unsigned long DimmerEx::FADE_DURATION_OFF = 0;
-unsigned long DimmerEx::FADE_DURATION_MIN = 20;
-unsigned long DimmerEx::FADE_DURATION_MAX = 3600000; // 1 hour (for sanity checks)
+unsigned long DimmerEx::FADE_DURATION_MIN = 15;       // ma wp³yw na p³ynnoœæ œciemniania (15 = 66.6 klatek na sekundê)
+unsigned long DimmerEx::FADE_DURATION_MAX = 3600000;  // 1 hour (for sanity checks)
 
 DimmerEx::DimmerEx() :
     _value(DimmerEx::VALUE_MIN),
@@ -62,10 +61,6 @@ void DimmerEx::setValue(byte value)
         value = DimmerEx::VALUE_MAX;
     if (value < DimmerEx::VALUE_MIN)
         value = DimmerEx::VALUE_MIN;
-
-    // light value hasn't changed
-    if (_value == value)
-        return;
 
     // last value should be always in the dimming range excluding ON and OFF states
     if (!isFading() && (_value > DimmerEx::VALUE_MIN) && (_value < DimmerEx::VALUE_MAX))
@@ -136,13 +131,10 @@ void DimmerEx::startFade(byte fadeToValue, unsigned long fadeDuration)
     if (fadeToValue > DimmerEx::VALUE_MAX)
         fadeToValue = DimmerEx::VALUE_MAX;
 
-    if (_value == fadeToValue) // light value hasn't changed
-        return;
-
     if (fadeDuration > DimmerEx::FADE_DURATION_MAX)
         fadeDuration = DimmerEx::FADE_DURATION_MAX;
 
-    if (fadeDuration <= DimmerEx::FADE_DURATION_MIN)
+    if (fadeDuration < DimmerEx::FADE_DURATION_MIN)
         return;
 
     stopFade();
@@ -154,6 +146,10 @@ void DimmerEx::startFade(byte fadeToValue, unsigned long fadeDuration)
     // Figure out what the interval should be so that we're chaning the color by at least 1 each cycle
     // Minimum fade interval is FADE_DURATION_MIN
     float fadeDiff = abs(_value - _fadeToValue);
+
+    if (fadeDiff == 0.0f) // division by ZERO protection
+        fadeDiff = 1.0f;
+
     _fadeInterval = round(static_cast<float>(fadeDuration) / fadeDiff);
 
     if (_fadeInterval < FADE_DURATION_MIN)

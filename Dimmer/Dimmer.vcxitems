@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{459231af-dfa6-4c32-a5f5-452c3ec2a597}</ItemsProjectGuid>
+    <ItemsSccProjectName>SAK</ItemsSccProjectName>
+    <ItemsSccAuxPath>SAK</ItemsSccAuxPath>
+    <ItemsSccLocalPath>SAK</ItemsSccLocalPath>
+    <ItemsSccProvider>SAK</ItemsSccProvider>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)Dimmer.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)DimmerEx.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DimmerI2C.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DimmerTLC.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Gamma_LED.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)DimmerEx.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DimmerI2C.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DimmerTLC.cpp" />
+  </ItemGroup>
+</Project>

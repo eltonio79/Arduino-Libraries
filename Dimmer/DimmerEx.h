@@ -31,11 +31,12 @@ class DimmerEx
 protected:
     static byte          VALUE_MIN;
     static byte          VALUE_MAX;
+
+public:
     static unsigned long FADE_DURATION_OFF;
     static unsigned long FADE_DURATION_MIN;
     static unsigned long FADE_DURATION_MAX;
 
-public:
     DimmerEx();
     DimmerEx(const DimmerEx& other);
     virtual ~DimmerEx();
