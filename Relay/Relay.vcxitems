@@ -25,6 +25,7 @@
     <!-- <ClInclude Include="$(MSBuildThisFileDirectory)Relay.h" /> -->
     <ClInclude Include="$(MSBuildThisFileDirectory)DoorRelay.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LatchingRelay.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PinRelay.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Relay.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)RelayEx.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)RingerRelay.h" />
@@ -32,6 +33,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)DoorRelay.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)LatchingRelay.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PinRelay.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Relay.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)RelayEx.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)RingerRelay.cpp" />

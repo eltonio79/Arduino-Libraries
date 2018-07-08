@@ -3,18 +3,6 @@
 
 #include "Arduino.h"
 
-namespace
-{
-    void Beep(byte pin, unsigned int beepDelay)
-    {
-        // the only "delay()" call in this code (use rarely..)
-        analogWrite(pin, 5); // 255 = very loud
-        delay(beepDelay);
-        analogWrite(pin, 0);
-        delay(beepDelay);
-    }
-}
-
 class Beeper
 {
 private:
