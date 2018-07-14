@@ -43,7 +43,7 @@ public:
     DimmerEx& operator=(const DimmerEx& other);
 
     // Member setters / getters
-    virtual void setValue(byte value); // acceted values from 0 to 100 (percent of the light)
+    virtual void setValue(byte value); // accepted values from 0 to 100 (percent of the light)
     byte getValue() const;
 
     // Calculates RAW dimming value (acceptable by hardware, derived dimmer)
