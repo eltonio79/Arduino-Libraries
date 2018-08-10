@@ -27,7 +27,8 @@ class TimeSpan;
 
 #define SECONDS_FROM_1970_TO_2000 946684800
 
-
+// tymczasowo dopóki nie zrobiê "normalnego" menu dla wprowadzania daty i czasu
+struct MenuUseEvent;
 
 // Simple general-purpose date/time class (no TZ / DST / leap second handling!)
 class DateTime {
@@ -54,6 +55,9 @@ public:
     DateTime operator+(const TimeSpan& span);
     DateTime operator-(const TimeSpan& span);
     TimeSpan operator-(const DateTime& right);
+
+    // tymczasowo dopóki nie zrobiê "normalnego" menu dla wprowadzania daty i czasu
+    friend void menuUseEvent(MenuUseEvent used);
 
 protected:
     uint8_t yOff, m, d, hh, mm, ss;

@@ -164,7 +164,7 @@ public:
 		if (next) {
 			if (cb_menuChange) {
 				MenuChangeEvent mce = { *current, *next };
-				(*cb_menuChange)(mce);
+				cb_menuChange(mce);
 			}
 			current = next;
 		}
