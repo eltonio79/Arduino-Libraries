@@ -37,7 +37,7 @@ void Relay::CopyFrom(const Relay& other)
     _minToggleMillis = other._minToggleMillis;
 }
 
-bool Relay::isOn()
+bool Relay::isSwitchedOn()
 {
     return isOnImpl();
 }

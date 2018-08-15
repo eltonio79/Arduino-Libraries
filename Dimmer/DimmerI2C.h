@@ -12,7 +12,6 @@ private:
     static byte RAW_VALUE_MIN;              // minimum RAW value (normally 128)
     static byte RAW_VALUE_MAX;              // minimum RAW value (normally 0)
 
-    static byte MYSENSORS_OFFSET;           // this identifier is the sensors type offset in MySensors register
     static MyMessage* MYMESSAGE_ACCESSOR;   // reference to global message to controller, used to construct messages "on the fly"
 
 public:
@@ -42,10 +41,6 @@ public:
     // MySensors message interface
     static void setMyMessageAccessor(MyMessage* myMessageAccessor);
     static MyMessage* getMyMessageAccessor();
-
-    // Dimmers offset (as a group) in the MySensors GateWay
-    static void setMySensorsOffset(byte value);
-    static byte getMySensorsOffset();
 
 private:
     void CopyFrom(const DimmerI2C& other);

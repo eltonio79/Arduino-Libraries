@@ -46,7 +46,7 @@ void RingerRelay::update()
 {
     static bool dingDong = true;
 
-    if (this->isOn())
+    if (this->isSwitchedOn())
     {
         if (millis() - _previousDingDong > _intervalDingDong)
         {

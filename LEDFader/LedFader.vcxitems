@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <ItemsProjectGuid>{459231af-dfa6-4c32-a5f5-452c3ec2a597}</ItemsProjectGuid>
+    <ItemsProjectGuid>{f25da417-eb60-4036-900e-40a4915dae49}</ItemsProjectGuid>
     <ItemsSccProjectName>SAK</ItemsSccProjectName>
     <ItemsSccAuxPath>SAK</ItemsSccAuxPath>
     <ItemsSccLocalPath>SAK</ItemsSccLocalPath>
@@ -20,20 +20,14 @@
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
     <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)LedFader.h" />
   </ItemGroup>
   <ItemGroup>
-    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)Dimmer.h" /> -->
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)LedFader.h" /> -->
     <ClInclude Include="$(MSBuildThisFileDirectory)Curve.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)DimmerEx.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)DimmerI2C.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)DimmerLED.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)DimmerTLC.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Curve.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)DimmerEx.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)DimmerI2C.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)DimmerLED.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)DimmerTLC.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)LedFader.cpp" />
   </ItemGroup>
 </Project>

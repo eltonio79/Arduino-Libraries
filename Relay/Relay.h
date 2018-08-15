@@ -24,7 +24,7 @@ public:
     Relay& operator=(const Relay& other);
 
     // Member setters / getters
-    virtual bool isOn();
+    virtual bool isSwitchedOn();
     virtual bool switchOn(unsigned long milliSeconds);
     virtual bool switchOff(unsigned long milliSeconds);
     virtual bool switchOn();
@@ -35,8 +35,8 @@ public:
     virtual void update();
 
     // Sequence number in the dimmers array (group ID)
-    virtual void setSequenceNumber(byte value) = 0;
-    virtual byte getSequenceNumber() const = 0;
+    virtual void setMySensorId(byte value) = 0;
+    virtual byte getMySensorId() const = 0;
 
 protected:
     // methods implementation to override

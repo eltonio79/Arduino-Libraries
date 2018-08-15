@@ -11,17 +11,17 @@ private:
     unsigned long _beepFrequency;
     unsigned long _beepLength;
     unsigned long _beepTone;
-    bool _isEnabled;
+    bool _isOn;
 
 public:
-    BeeperEx(byte pin, unsigned long beepFrequency, unsigned long beepLength, unsigned long beepTone, bool isEnabled);
+    BeeperEx(byte pin, unsigned long beepFrequency, unsigned long beepLength, unsigned long beepTone, bool isSwitchedOn);
     ~BeeperEx();
 
     void reInit(unsigned long beepFrequency, unsigned long beepLength, unsigned long beepTone);
 
-    bool isEnabled();
-    void enable();
-    void disable();
+    bool isSwitchedOn();
+    void switchOn();
+    void switchOff();
     void update();
 };
 

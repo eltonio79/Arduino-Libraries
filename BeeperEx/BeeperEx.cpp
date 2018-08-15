@@ -5,12 +5,12 @@ BeeperEx::~BeeperEx()
 {
 }
 
-BeeperEx::BeeperEx(byte pin, unsigned long beepFrequency, unsigned long beepLength, unsigned long beepTone, bool isEnabled) :
+BeeperEx::BeeperEx(byte pin, unsigned long beepFrequency, unsigned long beepLength, unsigned long beepTone, bool isSwitchedOn) :
 _pin(pin),
 _beepFrequency(beepFrequency),
 _beepLength(beepLength),
 _beepTone(beepTone),
-_isEnabled(isEnabled),
+_isOn(isSwitchedOn),
 _previousBeeperMillis(0)
 {
 }
@@ -22,24 +22,24 @@ void BeeperEx::reInit(unsigned long beepFrequency, unsigned long beepLength, uns
     _beepTone = beepTone;
 }
 
-bool BeeperEx::isEnabled()
+bool BeeperEx::isSwitchedOn()
 {
-    return _isEnabled;
+    return _isOn;
 }
 
-void BeeperEx::enable()
+void BeeperEx::switchOn()
 {
-    _isEnabled = true;
+    _isOn = true;
 }
 
-void BeeperEx::disable()
+void BeeperEx::switchOff()
 {
-    _isEnabled = false;
+    _isOn = false;
 }
 
 void BeeperEx::update()
 {
-    if (_isEnabled)
+    if (_isOn)
     {
         if (millis() - _previousBeeperMillis > _beepFrequency)
         {

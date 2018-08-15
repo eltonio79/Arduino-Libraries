@@ -8,7 +8,6 @@
 unsigned int DimmerTLC::RAW_VALUE_MIN = 0;    // full OFF
 unsigned int DimmerTLC::RAW_VALUE_MAX = 4095; // full ON
 
-byte DimmerTLC::MYSENSORS_OFFSET = 0;                 // this identifier is the sensors type offset in MySensors register
 MyMessage* DimmerTLC::MYMESSAGE_ACCESSOR = nullptr;   // reference to global message to controller, used to construct messages "on the fly"
 
 DimmerTLC::DimmerTLC(byte pin /*= 0*/):
@@ -78,7 +77,7 @@ void DimmerTLC::sendMessage_Controller(byte type, byte command)
 {
     // send actual light status to controller (if DimmerTLC::MYMESSAGE_ACCESSOR was set)
     if (DimmerTLC::MYMESSAGE_ACCESSOR != NULL)
-        send(DimmerTLC::MYMESSAGE_ACCESSOR->setSensor(DimmerTLC::MYSENSORS_OFFSET + _sequenceNumber + 1).setType(type).set(command));
+        send(DimmerTLC::MYMESSAGE_ACCESSOR->setSensor(_mySensorId).setType(type).set(command));
 }
 
 // Static member functions
@@ -91,14 +90,4 @@ void DimmerTLC::setMyMessageAccessor(MyMessage* myMessageAccessor)
 MyMessage* DimmerTLC::getMyMessageAccessor()
 {
     return DimmerTLC::MYMESSAGE_ACCESSOR;
-};
-
-void DimmerTLC::setMySensorsOffset(byte value)
-{
-    DimmerTLC::MYSENSORS_OFFSET = value;
-};
-
-byte DimmerTLC::getMySensorsOffset()
-{
-    return DimmerTLC::MYSENSORS_OFFSET;
 };

@@ -5,27 +5,6 @@
 
 #include <Arduino.h>
 
-// The minimum time (milliseconds) the program will wait between LED adjustments
-// Adjust this define to modify performance
-
-//dodaæ dimming curve - ze wzoru i z tabeli sterowane static memberem w ca³ej klasie lub wy³¹czane (enum raw calc led8 led10 led12 led16 mains)
-
-// przyklad uzycia "dimming curve ze wzoru" // https://diarmuid.ie/blog/pwm-exponential-led-fading-on-arduino-or-other-platforms/
-// The number of Steps between the output being on and off
-//const int dimIntervals = 100; // DimmerEx::VALUE_MAX - DimmerEx::VALUE_MIN
-// The R value in the graph equation
-// float R = 0.0f;
-// Calculate the R variable (only needs to be done once - at setup())
-//R = (dimIntervals * log10(2)) / (log10(255));
-//for (int interval = 0; interval <= dimIntervals; interval++)
-// {
-//    // Calculate the required PWM value for this interval step
-//    brightness = pow(2, (interval / R)) - 1;
-//    // Set the LED output to the calculated brightness
-//    analogWrite(transistorPin, brightness);
-//    delay(7);                                   // delay (n) where n is time to full brightness in milliseconds
-// }
-
 class DimmerEx
 {
 protected:
@@ -70,8 +49,8 @@ public:
     void update();
 
     // Sequence number in the dimmers array (group ID)
-    virtual void setSequenceNumber(byte value);
-    virtual byte getSequenceNumber() const;
+    virtual void setMySensorId(byte value);
+    virtual byte getMySensorId() const;
 
 private:
     void CopyFrom(const DimmerEx& other);
@@ -87,7 +66,7 @@ protected:
     unsigned long _fadeInterval;
     unsigned long _fadeLastStepTime;
     // this identifier helps to hide implementation of comunicate with external things (MySensors)
-    byte _sequenceNumber;
+    byte _mySensorId;
 };
 
 #endif // DIMMEREX_H_

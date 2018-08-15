@@ -8,8 +8,8 @@
 byte DimmerEx::VALUE_MIN = 0;
 byte DimmerEx::VALUE_MAX = 100;
 unsigned long DimmerEx::FADE_DURATION_OFF = 0;
-unsigned long DimmerEx::FADE_DURATION_MIN = 15;       // ma wp³yw na p³ynnoœæ œciemniania (15 = 66.6 klatek na sekundê)
-unsigned long DimmerEx::FADE_DURATION_MAX = 3600000;  // 1 hour (for sanity checks)
+unsigned long DimmerEx::FADE_DURATION_MIN = 15;        // ma wp³yw na p³ynnoœæ œciemniania (15 = 66.6 klatek na sekundê)
+unsigned long DimmerEx::FADE_DURATION_MAX = 86400000;  // 1 day (for sanity checks)
 
 DimmerEx::DimmerEx() :
     _value(DimmerEx::VALUE_MIN),
@@ -19,7 +19,7 @@ DimmerEx::DimmerEx() :
     _fadeDuration(DimmerEx::FADE_DURATION_OFF),
     _fadeInterval(0),
     _fadeLastStepTime(0),
-    _sequenceNumber(0)
+    _mySensorId(0)
 {
 }
 
@@ -51,7 +51,7 @@ void DimmerEx::CopyFrom(const DimmerEx& other)
     _fadeDuration = other._fadeDuration;
     _fadeInterval = other._fadeInterval;
     _fadeLastStepTime = other._fadeLastStepTime;
-    _sequenceNumber = other._sequenceNumber;
+    _mySensorId = other._mySensorId;
 }
 
 void DimmerEx::setValue(byte value)
@@ -211,12 +211,12 @@ void DimmerEx::update()
     return;
 }
 
-void DimmerEx::setSequenceNumber(byte value)
+void DimmerEx::setMySensorId(byte value)
 {
-    _sequenceNumber = value;
+    _mySensorId = value;
 };
 
-byte DimmerEx::getSequenceNumber() const
+byte DimmerEx::getMySensorId() const
 {
-    return _sequenceNumber;
+    return _mySensorId;
 };

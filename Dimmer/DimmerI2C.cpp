@@ -8,7 +8,6 @@
 byte DimmerI2C::RAW_VALUE_MIN = 128;  // full OFF
 byte DimmerI2C::RAW_VALUE_MAX = 0;    // full ON
 
-byte DimmerI2C::MYSENSORS_OFFSET = 0;                 // this identifier is the sensors type offset in MySensors register
 MyMessage* DimmerI2C::MYMESSAGE_ACCESSOR = nullptr;   // reference to global message to controller, used to construct messages "on the fly"
 
 DimmerI2C::DimmerI2C(byte slaveI2CAddress /* = 0   */,
@@ -128,7 +127,7 @@ void DimmerI2C::sendMessage_Controller(byte type, byte command)
 {
     // send actual light status to controller (if DimmerI2C::MYMESSAGE_ACCESSOR was set)
     if (DimmerI2C::MYMESSAGE_ACCESSOR != NULL)
-        send(DimmerI2C::MYMESSAGE_ACCESSOR->setSensor(DimmerI2C::MYSENSORS_OFFSET + _sequenceNumber + 1).setType(type).set(command));
+        send(DimmerI2C::MYMESSAGE_ACCESSOR->setSensor(_mySensorId).setType(type).set(command));
 }
 
 // Static member functions
@@ -141,14 +140,4 @@ void DimmerI2C::setMyMessageAccessor(MyMessage* myMessageAccessor)
 MyMessage* DimmerI2C::getMyMessageAccessor()
 {
     return DimmerI2C::MYMESSAGE_ACCESSOR;
-};
-
-void DimmerI2C::setMySensorsOffset(byte value)
-{
-    DimmerI2C::MYSENSORS_OFFSET = value;
-};
-
-byte DimmerI2C::getMySensorsOffset()
-{
-    return DimmerI2C::MYSENSORS_OFFSET;
 };

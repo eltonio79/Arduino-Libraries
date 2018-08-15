@@ -2,12 +2,11 @@
 #include <..\MySensors\core\MyMessage.h>
 #include <..\MySensors\core\MySensorsCore.h>
 
-byte RelayEx::MYSENSORS_OFFSET = 0;                 // this identifier is the sensors type offset in MySensors register
 MyMessage* RelayEx::MYMESSAGE_ACCESSOR = nullptr;   // reference to global message to controller, used to construct messages "on the fly"
 
 RelayEx::RelayEx(unsigned long minToggleMillis /* = 0*/) :
 Relay(minToggleMillis),
-_sequenceNumber(0)
+_mySensorId(0)
 {
 }
 
@@ -35,24 +34,24 @@ RelayEx& RelayEx::operator=(const RelayEx& other)
 
 void RelayEx::CopyFrom(const RelayEx& other)
 {
-    _sequenceNumber = other._sequenceNumber;
+    _mySensorId = other._mySensorId;
 }
 
-void RelayEx::setSequenceNumber(byte value)
+void RelayEx::setMySensorId(byte value)
 {
-    _sequenceNumber = value;
+    _mySensorId = value;
 }
 
-byte RelayEx::getSequenceNumber() const
+byte RelayEx::getMySensorId() const
 {
-    return _sequenceNumber;
+    return _mySensorId;
 }
 
 void RelayEx::sendMessage_Controller(byte type, byte command)
 {
     // send status to controller (if RelayEx::MYMESSAGE_ACCESSOR was set)
     if (RelayEx::MYMESSAGE_ACCESSOR != NULL)
-        send(RelayEx::MYMESSAGE_ACCESSOR->setSensor(RelayEx::MYSENSORS_OFFSET + _sequenceNumber + 1).setType(type).set(command));
+        send(RelayEx::MYMESSAGE_ACCESSOR->setSensor(_mySensorId).setType(type).set(command));
 }
 
 void RelayEx::On()
@@ -77,14 +76,4 @@ void RelayEx::setMyMessageAccessor(MyMessage* myMessageAccessor)
 MyMessage* RelayEx::getMyMessageAccessor()
 {
     return RelayEx::MYMESSAGE_ACCESSOR;
-}
-
-void RelayEx::setMySensorsOffset(byte value)
-{
-    RelayEx::MYSENSORS_OFFSET = value;
-};
-
-byte RelayEx::getMySensorsOffset()
-{
-    return RelayEx::MYSENSORS_OFFSET;
 }
