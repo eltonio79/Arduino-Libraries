@@ -1,5 +1,6 @@
 #include "BeeperEx.h"
 #include <NewTone.h>
+#include <Pitches.h>
 
 BeeperEx::~BeeperEx()
 {
@@ -45,7 +46,8 @@ void BeeperEx::update()
         {
             _previousBeeperMillis = millis();
             
-             NewTone(_pin, _beepTone, _beepLength);
+             NewTone(_pin, /*_beep
+                           Tone*/random(NOTE_C5, NOTE_C4), _beepLength);
         }
     }
 }

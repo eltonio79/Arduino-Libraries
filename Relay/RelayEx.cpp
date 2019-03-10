@@ -50,7 +50,7 @@ byte RelayEx::getMySensorId() const
 void RelayEx::sendMessage_Controller(byte type, byte command)
 {
     // send status to controller (if RelayEx::MYMESSAGE_ACCESSOR was set)
-    if (RelayEx::MYMESSAGE_ACCESSOR != NULL)
+    if (RelayEx::MYMESSAGE_ACCESSOR != nullptr)
         send(RelayEx::MYMESSAGE_ACCESSOR->setSensor(_mySensorId).setType(type).set(command));
 }
 

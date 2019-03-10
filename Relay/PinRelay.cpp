@@ -31,9 +31,13 @@ PinRelay& PinRelay::operator=(const PinRelay& other)
 void PinRelay::On()
 {
     digitalWrite(_pin, HIGH);
+
+    RelayEx::On();
 }
 
 void PinRelay::Off()
 {
     digitalWrite(_pin, LOW);
+
+    RelayEx::Off();
 }

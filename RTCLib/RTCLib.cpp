@@ -339,12 +339,24 @@ void RTC_DS1307::writenvram(uint8_t address, uint8_t data) {
 
 long RTC_Millis::offset = 0;
 
-void RTC_Millis::adjust(const DateTime& dt) {
+void RTC_Millis::adjust(const DateTime& dt)
+{
     offset = dt.unixtime() - millis() / 1000;
 }
 
-DateTime RTC_Millis::now() {
+DateTime RTC_Millis::now()
+{
   return (uint32_t)(offset + millis() / 1000);
+}
+
+float RTC_Millis::readTemp()
+{
+    return 0.0f;
+}
+
+bool RTC_Millis::lostPower(void)
+{
+    return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

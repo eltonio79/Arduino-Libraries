@@ -7,7 +7,7 @@ RelayEx(0), // better to call it instead of implicite call..
 _expander(expander),
 _pinA(pinA),
 _pinB(pinB),
-_maximumOnTime(7000)
+_maximumOnTime(7000) // bo tak
 {
     // nie dzia³a tu _expander.write(...) - wiesza MySensors / system !
 }
@@ -38,6 +38,16 @@ DoorRelay& DoorRelay::operator=(const DoorRelay& other)
     _maximumOnTime = other._maximumOnTime;
 
     return *this;
+}
+
+void DoorRelay::setOpenPeriod(int openPeriod)
+{
+    _maximumOnTime = openPeriod;
+}
+
+int DoorRelay::getOpenPeriod() const
+{
+    return _maximumOnTime;
 }
 
 bool DoorRelay::switchOn(unsigned long seconds)

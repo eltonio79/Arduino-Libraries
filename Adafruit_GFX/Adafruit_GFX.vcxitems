@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{effd1c22-5763-4e0d-bb9e-9ca7b69ea796}</ItemsProjectGuid>
+    <ItemsSccProjectName>SAK</ItemsSccProjectName>
+    <ItemsSccAuxPath>SAK</ItemsSccAuxPath>
+    <ItemsSccLocalPath>SAK</ItemsSccLocalPath>
+    <ItemsSccProvider>SAK</ItemsSccProvider>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)Adafruit_GFX.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)Adafruit_GFX.h" /> -->
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Adafruit_GFX.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)glcdfont.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMono12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMono18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMono24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMono9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoBold12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoBold18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoBold24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoBold9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoBoldOblique12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoBoldOblique18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoBoldOblique24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoBoldOblique9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoOblique12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoOblique18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoOblique24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeMonoOblique9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSans12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSans18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSans24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSans9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansBold12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansBold18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansBold24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansBold9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansBoldOblique12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansBoldOblique18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansBoldOblique24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansBoldOblique9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansOblique12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansOblique18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansOblique24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSansOblique9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerif12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerif18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerif24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerif9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifBold12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifBold18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifBold24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifBold9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifBoldItalic12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifBoldItalic18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifBoldItalic24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifBoldItalic9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifItalic12pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifItalic18pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifItalic24pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\FreeSerifItalic9pt7b.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Fonts\TomThumb.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)gfxfont.h" />
+  </ItemGroup>
+</Project>

@@ -25,6 +25,9 @@ public:
     virtual bool switchOn();
     virtual bool switchOff();
 
+    void setOpenPeriod(int openPeriod);
+    int getOpenPeriod() const;
+
 protected:
     // relay type dependant methods
     virtual void On();

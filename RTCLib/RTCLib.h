@@ -132,9 +132,12 @@ public:
 // NOTE: this clock won't be correct once the millis() timer rolls over (>49d?)
 class RTC_Millis {
 public:
+    static void begin(void) { }
     static void begin(const DateTime& dt) { adjust(dt); }
     static void adjust(const DateTime& dt);
     static DateTime now();
+    bool lostPower(void);
+    static float readTemp();
 
 protected:
     static long offset;

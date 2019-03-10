@@ -54,7 +54,7 @@ void DimmerEx::CopyFrom(const DimmerEx& other)
     _mySensorId = other._mySensorId;
 }
 
-void DimmerEx::setValue(byte value)
+bool DimmerEx::setValue(byte value)
 {
     // sanity checks
     if (value > DimmerEx::VALUE_MAX)
@@ -62,11 +62,16 @@ void DimmerEx::setValue(byte value)
     if (value < DimmerEx::VALUE_MIN)
         value = DimmerEx::VALUE_MIN;
 
+    if (value == _value)
+        return false;
+
     // last value should be always in the dimming range excluding ON and OFF states
     if (!isFading() && (_value > DimmerEx::VALUE_MIN) && (_value < DimmerEx::VALUE_MAX))
         _lastValue = _value;
 
     _value = value;
+
+    return true;
 }
 
 byte DimmerEx::getValue() const
@@ -86,20 +91,20 @@ bool DimmerEx::isSwitchedOn() const
 
 void DimmerEx::switchOn()
 {
-    stopFade();
-    setValue(DimmerEx::VALUE_MAX);
+    if (setValue(DimmerEx::VALUE_MAX))
+        stopFade();
 };
 
 void DimmerEx::switchLast()
 {
-    stopFade();
-    setValue(_lastValue);
+    if (setValue(_lastValue))
+        stopFade();
 };
 
 void DimmerEx::switchOff()
 {
-    stopFade();
-    setValue(DimmerEx::VALUE_MIN);
+    if (setValue(DimmerEx::VALUE_MIN))
+        stopFade();
 };
 
 void DimmerEx::switchToggle(bool threeStateMode)
@@ -180,8 +185,7 @@ void DimmerEx::update()
     if (!isFading())
         return;
 
-    unsigned long now = millis();
-    unsigned long timeDiff = now - _fadeLastStepTime;
+    unsigned long timeDiff = millis() - _fadeLastStepTime;
 
     // Interval hasn't passed yet
     if (timeDiff < _fadeInterval)

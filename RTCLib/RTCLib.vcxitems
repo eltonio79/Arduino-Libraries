@@ -23,9 +23,6 @@
     <Text Include="$(MSBuildThisFileDirectory)RTCLib.h" />
   </ItemGroup>
   <ItemGroup>
-    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)RTCLib.h" /> -->
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)RTCLib.cpp" />
   </ItemGroup>
 </Project>

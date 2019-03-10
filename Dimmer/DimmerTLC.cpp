@@ -43,18 +43,24 @@ void DimmerTLC::CopyFrom(const DimmerTLC& other)
     _pin = other._pin;
 }
 
-void DimmerTLC::setValue(byte value)
+bool DimmerTLC::setValue(byte value)
 {
     // Sets value with sanity check (%0 - 100%)
-    DimmerEx::setValue(value);
+    if (DimmerEx::setValue(value))
+    {
 
-    // real, hardware change of setValue state (method can be overriden in derived classes)
-    // zamiast funkcji map u¿yj tabeli gamma 10-bit z pliku Gamma_LED.h
-    Tlc.set(_pin, getValueRaw());
-    Tlc.update();
+        // real, hardware change of setValue state (method can be overriden in derived classes)
+        // zamiast funkcji map u¿yj tabeli gamma 10-bit z pliku Gamma_LED.h
+        Tlc.set(_pin, getValueRaw());
+        Tlc.update();
 
-    // update value status inside controller
-    sendMessage_Controller(V_PERCENTAGE, getValue());
+        // update value status inside controller
+        sendMessage_Controller(V_PERCENTAGE, getValue());
+
+        return true;
+    }
+
+    return false;
 }
 
 unsigned int DimmerTLC::getValueRaw() const

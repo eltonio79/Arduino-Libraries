@@ -21,7 +21,7 @@ public:
     DimmerTLC& operator=(const DimmerTLC& other);
 
     // Member setters / getters
-    virtual void setValue(byte value);
+    virtual bool setValue(byte value);
 
     // Calculates RAW dimming value (acceptable by hardware, derived dimmer)
     virtual unsigned int getValueRaw() const;

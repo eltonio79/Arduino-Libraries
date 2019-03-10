@@ -111,7 +111,7 @@ bool Relay::switchOffImpl(unsigned long milliSeconds)
 
 bool Relay::switchOnImpl()
 {
-    if (_isTiming)
+    if (_isTiming || _isOn)
         return false;
 
     if (_triggerStartMillis == 0 || millis() - _triggerStartMillis > _minToggleMillis)
@@ -131,7 +131,7 @@ bool Relay::switchOnImpl()
 
 bool Relay::switchOffImpl()
 {
-    if (_isTiming)
+    if (_isTiming || !_isOn)
         return false;
 
     if (_triggerStartMillis == 0 || millis() - _triggerStartMillis > _minToggleMillis)

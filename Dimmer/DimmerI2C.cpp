@@ -49,15 +49,20 @@ void DimmerI2C::CopyFrom(const DimmerI2C& other)
     _slaveI2CAddress = other._slaveI2CAddress;
 }
 
-void DimmerI2C::setValue(byte value)
+bool DimmerI2C::setValue(byte value)
 {
-    DimmerEx::setValue(value);
+    if (DimmerEx::setValue(value))
+    {
+        // real, hardware change of setValue state (method can be overriden in derived classes)
+        sendMessage_I2C(getValueRaw());
 
-    // real, hardware change of setValue state (method can be overriden in derived classes)
-    sendMessage_I2C(getValueRaw());
+        // update value status inside controller
+        sendMessage_Controller(V_PERCENTAGE, getValue());
 
-    // update value status inside controller
-    sendMessage_Controller(V_PERCENTAGE, getValue());
+        return true;
+    }
+
+    return false;
 }
 
 unsigned int DimmerI2C::getValueRaw() const

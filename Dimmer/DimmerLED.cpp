@@ -53,32 +53,46 @@ void DimmerLED::CopyFrom(const DimmerLED& other)
     _curve = other._curve;
 }
 
-void DimmerLED::setValue(byte value)
+bool DimmerLED::setValue(byte value)
 {
     if (_pins == NULL || _pinsActive == 0)
-        return;
+        return false;
 
-    DimmerEx::setValue(value);
-
-    // real, hardware change of setValue state (method can be overriden in derived classes)
-    unsigned int rawValue = getValueRaw();
-
-    for (uint8_t i = 0; i < _pinsActive; ++i)
+    if (DimmerEx::setValue(value))
     {
-        if (_curve != nullptr)
-            analogWrite(_pins[i], _curve(rawValue));
-        else
-            analogWrite(_pins[i], rawValue);
+        // real, hardware change of setValue state (method can be overriden in derived classes)
+        unsigned int rawValue = getValueRaw();
+
+        for (uint8_t i = 0; i < _pinsActive; ++i)
+        {
+            if (_curve != nullptr)
+                analogWrite(_pins[i], _curve(rawValue));
+            else
+                analogWrite(_pins[i], rawValue);
+        }
+
+        // update value status inside controller
+        sendMessage_Controller(V_PERCENTAGE, getValue());
+
+        return true;
     }
 
-    // update value status inside controller
-    sendMessage_Controller(V_PERCENTAGE, getValue());
+    return false;
 }
 
 unsigned int DimmerLED::getValueRaw() const
 {
     // calculate RAW dimming value
-    return map(_value, DimmerEx::VALUE_MIN, DimmerEx::VALUE_MAX, _minimumValue, _maximumValue);
+    unsigned int valueRaw = DimmerLED::RAW_VALUE_MIN;
+
+    if (_value <= DimmerEx::VALUE_MIN)
+        valueRaw = DimmerLED::RAW_VALUE_MIN; // turn OFF
+    else if (_value >= DimmerEx::VALUE_MAX)
+        valueRaw = DimmerLED::RAW_VALUE_MAX;  // turn ON
+    else
+        valueRaw = map(_value, 1, DimmerEx::VALUE_MAX, _minimumValue, _maximumValue); // DIM message (inside allowed range)
+
+    return valueRaw;
 }
 
 void DimmerLED::setMinimumValue(byte value)
@@ -144,7 +158,7 @@ DimmerLED::curveFunction DimmerLED::getCurve()
 void DimmerLED::sendMessage_Controller(byte type, byte command)
 {
     // send actual light status to controller (if DimmerLED::MYMESSAGE_ACCESSOR was set)
-    if (DimmerLED::MYMESSAGE_ACCESSOR != NULL)
+    if (DimmerLED::MYMESSAGE_ACCESSOR != nullptr)
         send(DimmerLED::MYMESSAGE_ACCESSOR->setSensor(_mySensorId).setType(type).set(command));
 }
 
