@@ -6,7 +6,7 @@
  * network topology allowing messages to be routed to nodes.
  *
  * Created by Henrik Ekblad <henrik.ekblad@mysensors.org>
- * Copyright (C) 2013-2017 Sensnology AB
+ * Copyright (C) 2013-2018 Sensnology AB
  * Full contributor list: https://github.com/mysensors/Arduino/graphs/contributors
  *
  * Documentation: http://www.mysensors.org
@@ -230,7 +230,7 @@
  * @brief Use this in case of collisions on the bus. 3 might be a good setting.
  */
 #ifndef MY_RS485_SOH_COUNT
-#define MY_RS485_SOH_COUNT (3)
+#define MY_RS485_SOH_COUNT (1)
 #endif
 
 
@@ -602,6 +602,7 @@
  * @def MY_RFM69_FREQUENCY
  * @brief The frequency to use.
  *
+ * - RFM69_315MHZ
  * - RFM69_433MHZ
  * - RFM69_868MHZ
  * - RFM69_915MHZ
@@ -816,6 +817,18 @@
  * @brief Define this for verbose debug prints related to the RFM95 driver.
  */
 //#define MY_DEBUG_VERBOSE_RFM95
+
+/**
+ * @def MY_RFM95_ENABLE_ENCRYPTION
+ * @brief Define this to enable software based %AES encryption.
+ *
+ * All nodes and gateway must have this enabled, and all must be personalized with the same %AES
+ * key.
+ * @see @ref personalization
+ *
+ * @warning This driver always sets the initialization vector to 0 so encryption is weak.
+ */
+//#define MY_RFM95_ENABLE_ENCRYPTION
 
 /**
  * @def MY_RFM95_FREQUENCY
@@ -1373,6 +1386,30 @@
 //#define MY_DEBUG_VERBOSE_GATEWAY
 
 /**
+* @def MY_WIFI_SSID
+* @brief SSID of your WiFi network
+*/
+//#define MY_WIFI_SSID "MySSID"
+
+/**
+* @def MY_WIFI_BSSID
+* @brief BSSID of your WiFi network
+*/
+//#define MY_WIFI_BSSID "MyBSSID"
+
+/**
+* @def MY_WIFI_PASSWORD
+* @brief Password of your WiFi network
+*/
+//#define MY_WIFI_PASSWORD "MyVerySecretPassword"
+
+/**
+* @def MY_HOSTNAME
+* @brief Hostname of your device
+*/
+//#define MY_HOSTNAME "MyHostname"
+
+/**
  * @def MY_PORT
  * @brief The Ethernet TCP/UDP port to open on controller or gateway.
  */
@@ -1775,7 +1812,7 @@
 /**
  * @def MY_SIGNING_FEATURE
  * @ingroup internals
- * @brief Helper flag to indicate that some signing feature is enabled
+ * @brief Helper flag to indicate that some signing feature is enabled, set automatically
  */
 #if defined(MY_SIGNING_ATSHA204) || defined(MY_SIGNING_SOFT)
 #define MY_SIGNING_FEATURE
@@ -1788,7 +1825,7 @@
  * @brief These options control encryption related configurations.
  *
  * Note that encryption is toggled on a per-radio basis.
- * @see MY_RF24_ENABLE_ENCRYPTION, MY_RFM69_ENABLE_ENCRYPTION, MY_NRF5_ESB_ENABLE_ENCRYPTION
+ * @see MY_RF24_ENABLE_ENCRYPTION, MY_RFM69_ENABLE_ENCRYPTION, MY_NRF5_ESB_ENABLE_ENCRYPTION, MY_RFM95_ENABLE_ENCRYPTION
  * @{
  */
 
@@ -1821,14 +1858,18 @@
 #ifndef MY_NRF5_ESB_ENABLE_ENCRYPTION
 #define MY_NRF5_ESB_ENABLE_ENCRYPTION
 #endif
+#ifndef MY_RFM95_ENABLE_ENCRYPTION
+#define MY_RFM95_ENABLE_ENCRYPTION
+#endif
 #endif
 
 /**
  * @def MY_ENCRYPTION_FEATURE
  * @ingroup internals
- * @brief Helper flag to indicate that some encryption feature is enabled
+ * @brief Helper flag to indicate that some encryption feature is enabled, set automatically
+ * @see MY_RF24_ENABLE_ENCRYPTION, MY_RFM69_ENABLE_ENCRYPTION, MY_NRF5_ESB_ENABLE_ENCRYPTION, MY_RFM95_ENABLE_ENCRYPTION
  */
-#if defined(MY_RF24_ENABLE_ENCRYPTION) || defined(MY_RFM69_ENABLE_ENCRYPTION) || defined(MY_NRF5_ESB_ENABLE_ENCRYPTION)
+#if defined(MY_RF24_ENABLE_ENCRYPTION) || defined(MY_RFM69_ENABLE_ENCRYPTION) || defined(MY_NRF5_ESB_ENABLE_ENCRYPTION) || defined(MY_RFM95_ENABLE_ENCRYPTION)
 #define MY_ENCRYPTION_FEATURE
 #endif
 /** @}*/ // End of EncryptionSettingGrpPub group
@@ -2172,6 +2213,10 @@
 #define MY_GATEWAY_ENC28J60
 #define MY_GATEWAY_ESP8266
 #define MY_GATEWAY_ESP32
+#define MY_WIFI_SSID
+#define MY_WIFI_BSSID
+#define MY_WIFI_PASSWORD
+#define MY_HOSTNAME
 #define MY_GATEWAY_LINUX
 #define MY_GATEWAY_TINYGSM
 #define MY_GATEWAY_MQTT_CLIENT
@@ -2275,6 +2320,7 @@
 // RFM95
 #define MY_RADIO_RFM95
 #define MY_DEBUG_VERBOSE_RFM95
+#define MY_RFM95_ENABLE_ENCRYPTION
 #define MY_RFM95_ATC_MODE_DISABLED
 #define MY_RFM95_RST_PIN
 #define MY_RFM95_MODEM_CONFIGRUATION

@@ -159,7 +159,7 @@
 #ifndef MyTransport_h
 #define MyTransport_h
 
-#include "hal/transport/MyTransportHAL.h"
+#include "../hal/transport/MyTransportHAL.h"
 
 #ifndef MY_TRANSPORT_MAX_TX_FAILURES
 #if defined(MY_REPEATER_FEATURE)
@@ -428,7 +428,7 @@ bool transportWaitUntilReady(const uint32_t waitingMS = 0);
 /**
 * @brief Initialize transport and SM
 */
-void transportInitialize(void);
+void transportInitialise(void);
 /**
 * @brief Process FIFO msg and update SM
 */
