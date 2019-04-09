@@ -202,7 +202,11 @@ class U8X8 : public Print
       u8x8_SetPowerSave(&u8x8, is_enable); }
 
     bool begin(void) {
-      initDisplay(); clearDisplay(); setPowerSave(0); return 1; }
+      initDisplay();
+      clearDisplay();
+      setPowerSave(0);
+      return 1;
+    }
 
 #ifdef U8X8_USE_PINS 
     /* use U8X8_PIN_NONE if a pin is not required */
