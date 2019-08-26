@@ -12,11 +12,11 @@ MyMessage* DimmerLED::MYMESSAGE_ACCESSOR = nullptr;   // reference to global mes
 
 DimmerLED::DimmerLED(const uint8_t* pins, uint8_t pinsCount, byte minimumValue, byte maximumValue) :
     DimmerEx(),
-    _pins(pins),
-    _pinsCount(pinsCount),
-    _pinsActive(pinsCount),
     _minimumValue(minimumValue),
     _maximumValue(maximumValue),
+    _pins(const_cast<uint8_t*>(pins)),
+    _pinsCount(pinsCount),
+    _pinsActive(pinsCount),
     _curve(nullptr)
 {
 }
