@@ -12,6 +12,7 @@ uint8_t _pinMask = 0;         // Pin bitmask.
 volatile uint8_t *_pinOutput; // Output port register
 
 void NewTone(uint8_t pin, unsigned long frequency, unsigned long length) {
+    return;
   uint8_t prescaler = _BV(CS50);                 // Try using prescaler 1 first.
   unsigned long top = F_CPU / frequency / 4 - 1; // Calculate the top.
   if (top > 65535) {                             // If not in the range for prescaler 1, use prescaler 256 (61 Hz and lower @ 16 MHz).
