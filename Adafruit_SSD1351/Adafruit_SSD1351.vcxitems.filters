@@ -17,7 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
-    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
     <Text Include="$(MSBuildThisFileDirectory)Adafruit_SSD1351.h">
       <Filter>Header Files</Filter>
     </Text>

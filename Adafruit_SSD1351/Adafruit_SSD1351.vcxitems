@@ -19,11 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
-    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
     <Text Include="$(MSBuildThisFileDirectory)Adafruit_SSD1351.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)Adafruit_SSD1351.h" /> -->
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Adafruit_SSD1351.cpp" />
