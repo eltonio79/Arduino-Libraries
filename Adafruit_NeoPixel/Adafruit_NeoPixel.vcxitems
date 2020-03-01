@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{d8cd5973-6619-4264-a6ae-e16912af1f30}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)Adafruit_NeoPixel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)Adafruit_NeoPixel.h" /> -->
+    <None Include="$(MSBuildThisFileDirectory)examples\buttoncycler\buttoncycler.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\RGBWstrandtest\RGBWstrandtest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\simple\simple.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\StrandtestBLE\StrandtestBLE.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\strandtest\strandtest.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Adafruit_NeoPixel.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\StrandtestBLE\BLESerial.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)examples\StrandtestBLE\BLESerial.h" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{a52154a0-c20f-423c-a0d4-77d92cc8a654}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)GRBL.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)GRBL.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\config.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\coolant_control.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\cpu_map.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\cpu_map\cpu_map_atmega2560.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\cpu_map\cpu_map_atmega328p.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_generic.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_oxcnc.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_shapeoko.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_shapeoko2.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_shapeoko3.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_sherline.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_simulator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_x_carve_1000mm.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_x_carve_500mm.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_zen_toolworks_7x7.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\eeprom.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\gcode.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\grbl.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\limits.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\motion_control.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\nuts_bolts.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\planner.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\print.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\probe.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\protocol.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\report.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\serial.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\settings.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\spindle_control.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\stepper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\system.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\coolant_control.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\eeprom.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\gcode.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\limits.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\main.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\motion_control.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\nuts_bolts.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\planner.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\print.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\probe.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\protocol.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\report.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\serial.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\settings.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\spindle_control.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\stepper.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\system.c" />
+  </ItemGroup>
+</Project>

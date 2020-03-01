@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{a68f80ef-abe7-4f39-92b3-9c4380dde9ae}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)MQTT.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)MQTT.h" /> -->
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\lwmqtt\helpers.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\lwmqtt\lwmqtt.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\lwmqtt\packet.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MQTT.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\MQTTClient.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\lwmqtt\client.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\lwmqtt\helpers.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\lwmqtt\packet.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\lwmqtt\string.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\MQTTClient.cpp" />
+  </ItemGroup>
+</Project>

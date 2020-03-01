@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;s</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Defaults">
+      <UniqueIdentifier>{b56dd390-6410-42dc-8001-5f169d1617dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cpu_Map">
+      <UniqueIdentifier>{841d8a61-9244-434d-800f-58bd818d60c4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)GRBL.h">
+      <Filter>Header Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_generic.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_oxcnc.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_shapeoko.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_shapeoko2.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_shapeoko3.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_sherline.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_simulator.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_x_carve_500mm.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_x_carve_1000mm.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults\defaults_zen_toolworks_7x7.h">
+      <Filter>Header Files\Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\cpu_map\cpu_map_atmega328p.h">
+      <Filter>Header Files\Cpu_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\cpu_map\cpu_map_atmega2560.h">
+      <Filter>Header Files\Cpu_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\coolant_control.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\cpu_map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\defaults.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\eeprom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\gcode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\grbl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\limits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\motion_control.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\nuts_bolts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\planner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\print.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\probe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\protocol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\report.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\serial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\spindle_control.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\stepper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)grbl\system.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\coolant_control.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\eeprom.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\gcode.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\limits.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\motion_control.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\nuts_bolts.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\planner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\print.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\probe.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\protocol.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\report.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\serial.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\settings.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\spindle_control.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\stepper.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)grbl\system.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

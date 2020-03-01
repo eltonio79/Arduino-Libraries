@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;s</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx</Extensions>
+    </Filter>
+    <Filter Include="Examples">
+      <UniqueIdentifier>{a577fa76-8fef-4832-b584-284bd3196811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\BLE">
+      <UniqueIdentifier>{9efe3682-544c-4081-9bc3-c7162b25e2e4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Adafruit_NeoPixel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\StrandtestBLE\BLESerial.cpp">
+      <Filter>Examples\BLE</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)Adafruit_NeoPixel.h">
+      <Filter>Header Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)examples\buttoncycler\buttoncycler.ino">
+      <Filter>Examples</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)examples\RGBWstrandtest\RGBWstrandtest.ino">
+      <Filter>Examples</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)examples\simple\simple.ino">
+      <Filter>Examples</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)examples\strandtest\strandtest.ino">
+      <Filter>Examples</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)examples\StrandtestBLE\StrandtestBLE.ino">
+      <Filter>Examples\BLE</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)examples\StrandtestBLE\BLESerial.h">
+      <Filter>Examples\BLE</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

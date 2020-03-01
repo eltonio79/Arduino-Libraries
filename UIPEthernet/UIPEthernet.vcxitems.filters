@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;s</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{0563a000-683d-4036-a8a8-85f7668232bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utility">
+      <UniqueIdentifier>{2db9abfe-455b-4481-b8bb-65efc34fa2fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MBed">
+      <UniqueIdentifier>{01526270-4227-4efb-be30-40d335e204eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MBed">
+      <UniqueIdentifier>{66984e57-625a-4244-b6ed-762238554937}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)keywords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)library.json" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" />
+    <None Include="$(MSBuildThisFileDirectory)README.ori" />
+    <None Include="$(MSBuildThisFileDirectory)library.properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Dhcp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Dns.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ethernet_comp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIPClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIPEthernet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIPServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIPUdp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\clock-arch.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\enc28j60.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Enc28J60Network.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\logging.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\mempool.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\mempool_conf.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_arch.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_arp.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_clock.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_debug.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_timer.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip-conf.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uipethernet-conf.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uipopt.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Client.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\dtostrf.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\IPAddress.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\itoa.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\millis.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\pgmspace.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Print.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Printable.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Server.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Udp.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\WString.h">
+      <Filter>Header Files\MBed</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Dhcp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Dns.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIPClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIPEthernet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIPServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIPUdp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\uip.c">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\uip_arp.c">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\uip_timer.c">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\clock-arch.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Enc28J60Network.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\mempool.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\uip_debug.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\dtostrf.c">
+      <Filter>Source Files\MBed</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\itoa.c">
+      <Filter>Source Files\MBed</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\IPAddress.cpp">
+      <Filter>Source Files\MBed</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\millis.cpp">
+      <Filter>Source Files\MBed</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\Print.cpp">
+      <Filter>Source Files\MBed</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\WString.cpp">
+      <Filter>Source Files\MBed</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{e945fba6-cfbd-4b39-8e6d-6b42e8021432}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)Ethernet_W5500.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)Ethernet_W5500.h" /> -->
+    <None Include="$(MSBuildThisFileDirectory)library.properties" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)DHCP.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DNS.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)EthernetClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)EthernetServer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)EthernetUDP.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Ethernet_W5500.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\BarometricPressureWebServer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\ChatServer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\DhcpAddressPrinter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\DhcpChatServer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\TelnetClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\Twitter_Serial_GW.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\Twitter_SimplePost.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\UdpNtpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\UDPSendReceiveString.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\WebClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\WebClientRepeating.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\WebServer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\XivelyClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)examples\XivelyClientString.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Twitter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\socket.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\w5100.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\w5200.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\w5500.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DHCP.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DNS.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)EthernetClient.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)EthernetServer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)EthernetUDP.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Twitter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)util.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\socket.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\util.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\w5100.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\w5200.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\w5500.h" />
+  </ItemGroup>
+</Project>

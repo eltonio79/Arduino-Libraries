@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{bfce0c77-02ec-4946-9054-a452f9465deb}</ItemsProjectGuid>
+    <ItemsProjectName>UIPEthernet</ItemsProjectName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <ClInclude Include="$(MSBuildThisFileDirectory)Ethernet_UIP.h" /> -->
+    <Text Include="$(MSBuildThisFileDirectory)keywords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)library.json" />
+    <None Include="$(MSBuildThisFileDirectory)library.properties" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" />
+    <None Include="$(MSBuildThisFileDirectory)README.ori" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Dhcp.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Dns.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ethernet_comp.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Client.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\dtostrf.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\IPAddress.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\itoa.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\millis.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\pgmspace.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Print.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Printable.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Server.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\Udp.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)mbed\WString.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIPClient.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIPEthernet.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIPServer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UIPUdp.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\clock-arch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\enc28j60.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\Enc28J60Network.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\logging.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\mempool.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\mempool_conf.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip-conf.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uipethernet-conf.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uipopt.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_arch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_arp.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_clock.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_debug.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)utility\uip_timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Dhcp.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Dns.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\dtostrf.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\IPAddress.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\itoa.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\millis.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\Print.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)mbed\WString.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIPClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIPEthernet.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIPServer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UIPUdp.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\clock-arch.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\Enc28J60Network.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\mempool.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\uip.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\uip_arp.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\uip_debug.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)utility\uip_timer.c" />
+  </ItemGroup>
+</Project>

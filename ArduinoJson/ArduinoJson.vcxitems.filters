@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;s</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON">
+      <UniqueIdentifier>{50bbeee2-65a7-4ae2-85c0-f2ee02ff4017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Array">
+      <UniqueIdentifier>{8906952a-815f-4af3-8cf2-c0249873b48b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Collection">
+      <UniqueIdentifier>{95a83b00-a18b-4476-9ce2-4c013102370b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Deserialization">
+      <UniqueIdentifier>{987a6590-50a5-4a4a-bc61-f99344f56072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Document">
+      <UniqueIdentifier>{6d3f6e27-b53d-4e32-916f-a9e1743c8950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Json">
+      <UniqueIdentifier>{c4e52898-049f-4428-816c-548101d284b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Memory">
+      <UniqueIdentifier>{7a000354-7570-4a13-8c0a-359d34d680dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Misc">
+      <UniqueIdentifier>{92ca620d-1222-4768-bd03-f7be00546633}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\MsgPack">
+      <UniqueIdentifier>{d0329b37-08c5-4f94-b89c-ded3589d8a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Numbers">
+      <UniqueIdentifier>{23105783-f1bf-4d41-b1be-314a48b7dadd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Object">
+      <UniqueIdentifier>{01219a39-49c3-4a08-a825-d232b0718977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Operators">
+      <UniqueIdentifier>{02fe722c-4a23-4814-a0d1-43495c5ed5ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Polyfills">
+      <UniqueIdentifier>{5c5b34b9-2f9c-4f78-9a1c-2e058da2fc78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Serialization">
+      <UniqueIdentifier>{cdc39536-3a76-472d-96b2-b13379d16bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Strings">
+      <UniqueIdentifier>{7c90b88c-6ad7-494e-84e2-8de32bd1d92b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\StringStorage">
+      <UniqueIdentifier>{6cfd9001-ca03-4253-aed6-68861da8f839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Variant">
+      <UniqueIdentifier>{5ae2bd26-e6c3-4f8b-8e28-6d77e72522cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Polyfills\gsl">
+      <UniqueIdentifier>{7906e9f0-2686-48c3-976c-217bd62ac009}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Polyfills\mpl">
+      <UniqueIdentifier>{2409b50a-c31b-4af3-a43d-35e7ceae200f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ArduinoJSON\Polyfills\type_traits">
+      <UniqueIdentifier>{ace96962-9069-4734-be36-825dc6161c59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)ArduinoJSON.h">
+      <Filter>Header Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\compatibility.hpp">
+      <Filter>Source Files\ArduinoJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Configuration.hpp">
+      <Filter>Source Files\ArduinoJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Namespace.hpp">
+      <Filter>Source Files\ArduinoJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\version.hpp">
+      <Filter>Source Files\ArduinoJSON</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Array\ArrayFunctions.hpp">
+      <Filter>Source Files\ArduinoJSON\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Array\ArrayImpl.hpp">
+      <Filter>Source Files\ArduinoJSON\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Array\ArrayIterator.hpp">
+      <Filter>Source Files\ArduinoJSON\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Array\ArrayRef.hpp">
+      <Filter>Source Files\ArduinoJSON\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Array\ArrayShortcuts.hpp">
+      <Filter>Source Files\ArduinoJSON\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Array\ElementProxy.hpp">
+      <Filter>Source Files\ArduinoJSON\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Array\Utilities.hpp">
+      <Filter>Source Files\ArduinoJSON\Array</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Collection\CollectionData.hpp">
+      <Filter>Source Files\ArduinoJSON\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Collection\CollectionImpl.hpp">
+      <Filter>Source Files\ArduinoJSON\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Deserialization\ArduinoStreamReader.hpp">
+      <Filter>Source Files\ArduinoJSON\Deserialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Deserialization\CharPointerReader.hpp">
+      <Filter>Source Files\ArduinoJSON\Deserialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Deserialization\DeserializationError.hpp">
+      <Filter>Source Files\ArduinoJSON\Deserialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Deserialization\deserialize.hpp">
+      <Filter>Source Files\ArduinoJSON\Deserialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Deserialization\FlashStringReader.hpp">
+      <Filter>Source Files\ArduinoJSON\Deserialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Deserialization\IteratorReader.hpp">
+      <Filter>Source Files\ArduinoJSON\Deserialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Deserialization\NestingLimit.hpp">
+      <Filter>Source Files\ArduinoJSON\Deserialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Deserialization\StdStreamReader.hpp">
+      <Filter>Source Files\ArduinoJSON\Deserialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Document\BasicJsonDocument.hpp">
+      <Filter>Source Files\ArduinoJSON\Document</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Document\DynamicJsonDocument.hpp">
+      <Filter>Source Files\ArduinoJSON\Document</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Document\JsonDocument.hpp">
+      <Filter>Source Files\ArduinoJSON\Document</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Document\StaticJsonDocument.hpp">
+      <Filter>Source Files\ArduinoJSON\Document</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Json\EscapeSequence.hpp">
+      <Filter>Source Files\ArduinoJSON\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Json\JsonDeserializer.hpp">
+      <Filter>Source Files\ArduinoJSON\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Json\JsonSerializer.hpp">
+      <Filter>Source Files\ArduinoJSON\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Json\PrettyJsonSerializer.hpp">
+      <Filter>Source Files\ArduinoJSON\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Json\TextFormatter.hpp">
+      <Filter>Source Files\ArduinoJSON\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Json\Utf8.hpp">
+      <Filter>Source Files\ArduinoJSON\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Memory\Alignment.hpp">
+      <Filter>Source Files\ArduinoJSON\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Memory\MemoryPool.hpp">
+      <Filter>Source Files\ArduinoJSON\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Memory\StringBuilder.hpp">
+      <Filter>Source Files\ArduinoJSON\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Memory\StringSlot.hpp">
+      <Filter>Source Files\ArduinoJSON\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Misc\SerializedValue.hpp">
+      <Filter>Source Files\ArduinoJSON\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Misc\Visitable.hpp">
+      <Filter>Source Files\ArduinoJSON\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\MsgPack\endianess.hpp">
+      <Filter>Source Files\ArduinoJSON\MsgPack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\MsgPack\ieee754.hpp">
+      <Filter>Source Files\ArduinoJSON\MsgPack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\MsgPack\MsgPackDeserializer.hpp">
+      <Filter>Source Files\ArduinoJSON\MsgPack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\MsgPack\MsgPackSerializer.hpp">
+      <Filter>Source Files\ArduinoJSON\MsgPack</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\SlotFunctions.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantAs.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantAsImpl.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantContent.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantData.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantFunctions.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantImpl.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantRef.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantSlot.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Variant\VariantTo.hpp">
+      <Filter>Source Files\ArduinoJSON\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\StringStorage\StringCopier.hpp">
+      <Filter>Source Files\ArduinoJSON\StringStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\StringStorage\StringMover.hpp">
+      <Filter>Source Files\ArduinoJSON\StringStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\StringStorage\StringStorage.hpp">
+      <Filter>Source Files\ArduinoJSON\StringStorage</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\ArduinoStringAdapter.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\ConstRamStringAdapter.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\FlashStringAdapter.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\RamStringAdapter.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\SizedFlashStringAdapter.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\SizedRamStringAdapter.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\StlStringAdapter.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\String.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Strings\StringAdapters.hpp">
+      <Filter>Source Files\ArduinoJSON\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Serialization\DummyWriter.hpp">
+      <Filter>Source Files\ArduinoJSON\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Serialization\DynamicStringWriter.hpp">
+      <Filter>Source Files\ArduinoJSON\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Serialization\measure.hpp">
+      <Filter>Source Files\ArduinoJSON\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Serialization\PrintWriter.hpp">
+      <Filter>Source Files\ArduinoJSON\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Serialization\serialize.hpp">
+      <Filter>Source Files\ArduinoJSON\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Serialization\StaticStringWriter.hpp">
+      <Filter>Source Files\ArduinoJSON\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Serialization\StreamWriter.hpp">
+      <Filter>Source Files\ArduinoJSON\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Serialization\WriterSelector.hpp">
+      <Filter>Source Files\ArduinoJSON\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\alias_cast.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\assert.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\attributes.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\ctype.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\limits.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\math.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\pgmspace.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\safe_strcmp.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\utility.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\gsl\not_null.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\gsl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\mpl\max.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\mpl</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\conditional.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\enable_if.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\integral_constant.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\is_array.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\is_base_of.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\is_const.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\is_floating_point.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\is_integral.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\is_same.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\is_signed.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\is_unsigned.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\make_unsigned.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\remove_const.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\remove_reference.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Polyfills\type_traits\type_identity.hpp">
+      <Filter>Source Files\ArduinoJSON\Polyfills\type_traits</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Operators\VariantCasts.hpp">
+      <Filter>Source Files\ArduinoJSON\Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Operators\VariantComparisons.hpp">
+      <Filter>Source Files\ArduinoJSON\Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Operators\VariantOperators.hpp">
+      <Filter>Source Files\ArduinoJSON\Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Operators\VariantOr.hpp">
+      <Filter>Source Files\ArduinoJSON\Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Operators\VariantShortcuts.hpp">
+      <Filter>Source Files\ArduinoJSON\Operators</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Object\MemberProxy.hpp">
+      <Filter>Source Files\ArduinoJSON\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Object\ObjectFunctions.hpp">
+      <Filter>Source Files\ArduinoJSON\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Object\ObjectImpl.hpp">
+      <Filter>Source Files\ArduinoJSON\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Object\ObjectIterator.hpp">
+      <Filter>Source Files\ArduinoJSON\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Object\ObjectRef.hpp">
+      <Filter>Source Files\ArduinoJSON\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Object\ObjectShortcuts.hpp">
+      <Filter>Source Files\ArduinoJSON\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Object\Pair.hpp">
+      <Filter>Source Files\ArduinoJSON\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Numbers\convertNumber.hpp">
+      <Filter>Source Files\ArduinoJSON\Numbers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Numbers\Float.hpp">
+      <Filter>Source Files\ArduinoJSON\Numbers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Numbers\FloatParts.hpp">
+      <Filter>Source Files\ArduinoJSON\Numbers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Numbers\FloatTraits.hpp">
+      <Filter>Source Files\ArduinoJSON\Numbers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Numbers\Integer.hpp">
+      <Filter>Source Files\ArduinoJSON\Numbers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Numbers\parseFloat.hpp">
+      <Filter>Source Files\ArduinoJSON\Numbers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Numbers\parseInteger.hpp">
+      <Filter>Source Files\ArduinoJSON\Numbers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\ArduinoJson\Numbers\parseNumber.hpp">
+      <Filter>Source Files\ArduinoJSON\Numbers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
