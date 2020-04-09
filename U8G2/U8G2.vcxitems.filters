@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;s</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)U8G2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_bitmap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_box.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_buffer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_circle.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_cleardisplay.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_d_memory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_d_setup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_font.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_fonts.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_hvline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_input_value.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_intersection.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_kerning.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_line.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_ll_hvline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_message.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_polygon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_selection_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8g2_setup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8log_u8g2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8log_u8x8.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_8x8.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_byte.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_cad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_capture.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_a2printer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_il3820_296x128.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ist3020.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ist7920.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ks0108.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_lc7981.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ld7032_60x32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ls013b7dh03.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_max7219.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_pcd8544_84x48.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_pcf8812.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_pcf8814_hx1230.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_sbn1661.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_sed1330.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_sh1106_64x32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_sh1106_72x40.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_sh1107.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_sh1108.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_sh1122.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1305.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1306_48x64.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1306_64x32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1306_64x48.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1306_72x40.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1306_96x16.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1306_128x32.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1306_128x64_noname.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1309.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1316.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1317.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1318.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1322.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1325.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1326.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1327.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1329.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1606_172x72.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_ssd1607_200x200.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st7511.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st7528.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st7565.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st7567.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st7586s_erc240160.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st7586s_s028hn118a.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st7588.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st7920.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st75256.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_st75320.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_t6963.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1601.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1604.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1608.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1610.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1611.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1617.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1638.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1701_dogs102.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_d_uc1701_mini12864.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_debounce.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_display.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_fonts.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_gpio.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_input_value.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_message.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_selection_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_setup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_string.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_u8toa.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\clib\u8x8_u16toa.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\U8g2lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\U8x8lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
+    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
+    <Text Include="$(MSBuildThisFileDirectory)U8G2.h">
+      <Filter>Header Files</Filter>
+    </Text>
+    <Text Include="$(MSBuildThisFileDirectory)keywords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\FontUsage\FontUsage.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\FPS\FPS.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\GraphicsTest\GraphicsTest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\HelloWorld\HelloWorld.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\IconMenu\IconMenu.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\PrintUTF8\PrintUTF8.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\ScreenShot\ScreenShot.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\SelectionList\SelectionList.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\Shennong\Shennong.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\U8g2Logo\U8g2Logo.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\UpdateArea\UpdateArea.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\full_buffer\Weather\Weather.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\games\LittleRookChess\LittleRookChess.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\games\SpaceTrash\SpaceTrash.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\A2Printer\A2Printer.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Chinese\Chinese.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\ClipWindow\ClipWindow.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Clock\Clock.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\ContrastTest\ContrastTest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Devanagari\Devanagari.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\DirectAccess\DirectAccess.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\DrawLog\DrawLog.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\ExtUTF8\ExtUTF8.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\FlipMode\FlipMode.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\FPS\FPS.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\GraphicsTest\GraphicsTest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\HelloWorld\HelloWorld.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\IconMenu\IconMenu.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Japanese\Japanese.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Korean\Korean.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\LoadFromSD\LoadFromSD.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\PowerSaveTest\PowerSaveTest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\PrintHelloWorld\PrintHelloWorld.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\PrintProgmem\PrintProgmem.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\PrintUTF8\PrintUTF8.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\ScrollingText\ScrollingText.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\SelectionList\SelectionList.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Serial\Serial.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Shennong\Shennong.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\StateBufferLoop\StateBufferLoop.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Terminal\Terminal.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\U8g2Logo\U8g2Logo.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\UpdatePartly\UpdatePartly.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\Weather\Weather.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\XBM\XBM.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\page_buffer\XORTest\XORTest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\u8x8\16x16Font\16x16Font.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\u8x8\ArduboyTest\ArduboyTest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\u8x8\FlipMode\FlipMode.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\u8x8\GraphicsTest\GraphicsTest.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\u8x8\HelloWorld\HelloWorld.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\u8x8\MessageBox\MessageBox.ino" />
+    <None Include="$(MSBuildThisFileDirectory)examples\u8x8\Terminal\Terminal.ino" />
+    <None Include="$(MSBuildThisFileDirectory)LICENSE" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\clib\u8g2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\clib\u8x8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\U8g2lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\U8x8lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -20,28 +20,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)OneWire.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)examples\DS18x20_Temperature.cpp">
-      <Filter>Examples</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)examples\DS250x_PROM.cpp">
-      <Filter>Examples</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)examples\DS2408_Switch.cpp">
-      <Filter>Examples</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="$(MSBuildThisFileDirectory)library.properties" />
-    <Text Include="$(MSBuildThisFileDirectory)OneWire.h">
+    <Text Include="$(MSBuildThisFileDirectory)keywords.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)OneWire.h">
       <Filter>Header Files</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)util\OneWire_direct_gpio.h">
-      <Filter>Util</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)util\OneWire_direct_regtype.h">
-      <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

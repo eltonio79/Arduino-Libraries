@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <ItemsProjectGuid>{31c0686a-0b7b-47e6-b2fd-56c74fb977d4}</ItemsProjectGuid>
+    <ItemsProjectGuid>{5FD8C9E7-8A45-4203-8B32-9CA31A352B7B}</ItemsProjectGuid>
     <ItemsSccProjectName>SAK</ItemsSccProjectName>
     <ItemsSccAuxPath>SAK</ItemsSccAuxPath>
     <ItemsSccLocalPath>SAK</ItemsSccLocalPath>
