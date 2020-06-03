@@ -1,5 +1,6 @@
 {
   "name": "Eltonio Dimmer",
+  "version": "1.0.0",
   "keywords": "dimmer, eltonio, i2c, tlc, direct, led, ac, mysensors",
   "description": "Multi purpouse dimmer. MySensors powered.",
   "include": "Dimmer",
