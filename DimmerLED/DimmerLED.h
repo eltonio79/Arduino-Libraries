@@ -1,10 +1,10 @@
 #ifndef DIMMERLED_H_
 #define DIMMERLED_H_
 
-// uncomment if needed; TODO - move MySensors Logic into some template common class
-#define MYSENSORS_DISABLED
+// define if needed; TODO - move MySensors Logic into some template common class
+// #define MYSENSORS_INTEGRATION
 
-#include "..\..\Libraries\DimmerEx\DimmerEx.h"
+#include "..\DimmerEx\DimmerEx.h"
 
 class MyMessage;
 
@@ -14,7 +14,7 @@ private:
     static byte RAW_VALUE_MIN;              // minimum RAW value (normally 0)
     static byte RAW_VALUE_MAX;              // minimum RAW value (normally 255)
 
-#if !defined(MYSENSORS_DISABLED)
+#if defined(MYSENSORS_INTEGRATION)
     static MyMessage* MYMESSAGE_ACCESSOR;   // reference to global message to controller, used to construct messages "on the fly"
 #endif
 
@@ -23,8 +23,8 @@ public:
 
     // #param pins
     // #param pinsCount
-    // #param minimumValue (0 - 255); dobieraæ eksperymentalnie
-    // #param maximumValue (0 - 255); dobieraæ eksperymentalnie
+    // #param minimumValue (0 - 255); dobieraï¿½ eksperymentalnie
+    // #param maximumValue (0 - 255); dobieraï¿½ eksperymentalnie
     DimmerLED(uint8_t* pins,
               uint8_t pinsCount = 1,
               byte minimumValue = RAW_VALUE_MIN,
@@ -53,7 +53,7 @@ public:
     curveFunction getCurve();
 
     // MySensors message interface
-#if !defined(MYSENSORS_DISABLED)
+#if defined(MYSENSORS_INTEGRATION)
     static void setMyMessageAccessor(MyMessage* myMessageAccessor);
     static MyMessage* getMyMessageAccessor();
 #endif
@@ -61,7 +61,7 @@ public:
 private:
     void CopyFrom(const DimmerLED& other);
 
-#if !defined(MYSENSORS_DISABLED)
+#if defined(MYSENSORS_INTEGRATION)
     void sendMessage_Controller(byte type, byte command);
 #endif
 

@@ -1,6 +1,6 @@
 #include "DimmerLED.h"
 
-#if !defined(MYSENSORS_DISABLED)
+#if defined(MYSENSORS_INTEGRATION)
 #include "..\MySensors\core\MyMessage.h"
 #include "..\MySensors\core\MySensorsCore.h"
 #endif
@@ -10,7 +10,7 @@
 byte DimmerLED::RAW_VALUE_MIN = 0;   // full OFF
 byte DimmerLED::RAW_VALUE_MAX = 255; // full ON
 
-#if !defined(MYSENSORS_DISABLED)
+#if defined(MYSENSORS_INTEGRATION)
 MyMessage* DimmerLED::MYMESSAGE_ACCESSOR = nullptr;   // reference to global message to controller, used to construct messages "on the fly"
 #endif
 
@@ -81,7 +81,7 @@ bool DimmerLED::setValue(byte value)
         }
 
         // update value status inside controller
-#if !defined(MYSENSORS_DISABLED)
+#if defined(MYSENSORS_INTEGRATION)
         sendMessage_Controller(V_PERCENTAGE, getValue());
 #endif
 
@@ -166,7 +166,7 @@ DimmerLED::curveFunction DimmerLED::getCurve()
     return _curve;
 }
 
-#if !defined(MYSENSORS_DISABLED)
+#if defined(MYSENSORS_INTEGRATION)
 
 void DimmerLED::sendMessage_Controller(byte type, byte command)
 {

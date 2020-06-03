@@ -1,5 +1,4 @@
 #include "DimmerEx.h"
-#include <Wire.h>
 
 #define UNUSED(argument) (void) (argument)
 
@@ -8,7 +7,7 @@
 byte DimmerEx::VALUE_MIN = 0;
 byte DimmerEx::VALUE_MAX = 100;
 unsigned long DimmerEx::FADE_DURATION_OFF = 0;
-unsigned long DimmerEx::FADE_DURATION_MIN = 15;        // ma wp³yw na p³ynnoœæ œciemniania (15 = 66.6 klatek na sekundê)
+unsigned long DimmerEx::FADE_DURATION_MIN = 15;        // ma wpï¿½yw na pï¿½ynnoï¿½ï¿½ ï¿½ciemniania (15 = 66.6 klatek na sekundï¿½)
 unsigned long DimmerEx::FADE_DURATION_MAX = 86400000;  // 1 day (for sanity checks)
 
 DimmerEx::DimmerEx() :
