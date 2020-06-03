@@ -1,5 +1,5 @@
 #include "DimmerTLC.h"
-#include "Tlc5940.h"
+#include <Tlc5940.h>
 #include <..\MySensors\core\MyMessage.h>
 #include <..\MySensors\core\MySensorsCore.h>
 
@@ -50,7 +50,7 @@ bool DimmerTLC::setValue(byte value)
     {
 
         // real, hardware change of setValue state (method can be overriden in derived classes)
-        // zamiast funkcji map u¿yj tabeli gamma 10-bit z pliku Gamma_LED.h
+        // zamiast funkcji map uï¿½yj tabeli gamma 10-bit z pliku Gamma_LED.h
         Tlc.set(_pin, getValueRaw());
         Tlc.update();
 
@@ -65,7 +65,7 @@ bool DimmerTLC::setValue(byte value)
 
 unsigned int DimmerTLC::getValueRaw() const
 {
-    // zamiast funkcji map u¿yj tabeli gamma 10-bit z pliku Gamma_LED.h
+    // zamiast funkcji map uï¿½yj tabeli gamma 10-bit z pliku Gamma_LED.h
     return map(_value, DimmerEx::VALUE_MIN, DimmerEx::VALUE_MAX, DimmerTLC::RAW_VALUE_MIN, DimmerTLC::RAW_VALUE_MAX);
 }
 

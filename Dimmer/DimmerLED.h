@@ -2,7 +2,7 @@
 #define DIMMERLED_H_
 
 #include <Arduino.h>
-#include <DimmerEx.h>
+#include "DimmerEx.h"
 
 class MyMessage;
 
@@ -18,8 +18,8 @@ public:
     typedef uint8_t(*curveFunction)(uint8_t);
 
     // #param
-    // #param minimumValue (0 - 255); dobieraæ eksperymentalnie
-    // #param maximumValue (0 - 255); dobieraæ eksperymentalnie
+    // #param minimumValue (0 - 255); dobieraï¿½ eksperymentalnie
+    // #param maximumValue (0 - 255); dobieraï¿½ eksperymentalnie
     DimmerLED(const uint8_t* pins, uint8_t pinsCount, byte minimumValue = RAW_VALUE_MIN, byte maximumValue = RAW_VALUE_MAX);
     DimmerLED(const DimmerLED& other);
     virtual ~DimmerLED();

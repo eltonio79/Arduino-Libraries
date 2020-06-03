@@ -1,0 +1,28 @@
+{
+  "name": "Eltonio Dimmer",
+  "keywords": "dimmer, eltonio, i2c, tlc, direct, led, ac, mysensors",
+  "description": "Multi purpouse dimmer. MySensors powered.",
+  "include": "Dimmer",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/eltonio79/Arduino-Libraries.git"
+  },
+  "dependencies":
+  [
+    {
+      "name": "TLC5940",
+      "frameworks": "arduino"
+    },
+    {
+      "name": "MySensors",
+      "frameworks": "arduino"
+    },
+    {
+      "name": "Wire",
+      "frameworks": "arduino"
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "atmelavr"
+}
