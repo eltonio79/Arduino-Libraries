@@ -1,18 +1,18 @@
-#ifndef PinRelay_H_
-#define PinRelay_H_
+#ifndef RelayPin_H_
+#define RelayPin_H_
 
 #include <Arduino.h>
 #include <RelayEx.h>
 
-class PinRelay : public RelayEx
+class RelayPin : public RelayEx
 {
     byte _pin;
 
 public:
-    PinRelay(byte pin, unsigned long minToggleMillis = 0);
-    PinRelay(const PinRelay& other);
-    PinRelay& operator=(const PinRelay& other);
-    virtual ~PinRelay();
+    RelayPin(byte pin, unsigned long minToggleMillis = 0);
+    RelayPin(const RelayPin& other);
+    RelayPin& operator=(const RelayPin& other);
+    virtual ~RelayPin();
 
 protected:
     // relay type dependant methods
@@ -20,4 +20,4 @@ protected:
     virtual void Off();
 };
 
-#endif // PinRelay_H_
+#endif // RelayPin_H_

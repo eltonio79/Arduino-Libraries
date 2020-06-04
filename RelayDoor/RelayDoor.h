@@ -1,12 +1,12 @@
-#ifndef DoorRelay_H_
-#define DoorRelay_H_
+#ifndef RelayDoor_H_
+#define RelayDoor_H_
 
 #include <Arduino.h>
 #include <RelayEx.h>
 
 class PCF8574;
 
-class DoorRelay : public RelayEx
+class RelayDoor : public RelayEx
 {
     PCF8574& _expander;
     byte _pinA;
@@ -15,10 +15,10 @@ class DoorRelay : public RelayEx
     unsigned long _maximumOnTime;
 
 public:
-    DoorRelay(PCF8574& expander, byte pinA, byte pinB);
-    DoorRelay(const DoorRelay& other);
-    DoorRelay& operator=(const DoorRelay& other);
-    virtual ~DoorRelay();
+    RelayDoor(PCF8574& expander, byte pinA, byte pinB);
+    RelayDoor(const RelayDoor& other);
+    RelayDoor& operator=(const RelayDoor& other);
+    virtual ~RelayDoor();
 
     virtual bool switchOn(unsigned long seconds);
     virtual bool switchOff(unsigned long seconds);
@@ -34,4 +34,4 @@ protected:
     virtual void Off();
 };
 
-#endif // DoorRelay_H_
+#endif // RelayDoor_H_

@@ -1,13 +1,13 @@
-#include "ACDimmer.h"
+#include "DimmerTriac.h"
 #include <TimerOne.h>
 
-int ACDimmer::_frequencyStep = 78;
+int DimmerTriac::_frequencyStep = 78;
 
-ACDimmer::~ACDimmer()
+DimmerTriac::~DimmerTriac()
 {
 }
 
-ACDimmer::ACDimmer(byte pinDimming) :
+DimmerTriac::DimmerTriac(byte pinDimming) :
 _pinDimming(pinDimming),
 _zeroCrossDetected(false),
 _dimmingCounter(0),
@@ -15,7 +15,7 @@ _dimmingLevel(128)
 {
 }
 
-void ACDimmer::init(TimerOne& timerOne, byte interruptZeroCross, void(*zeroCrossEventHandler)(), void(*dimmingLevelEventHandler)())
+void DimmerTriac::init(TimerOne& timerOne, byte interruptZeroCross, void(*zeroCrossEventHandler)(), void(*dimmingLevelEventHandler)())
 {
     attachInterrupt(interruptZeroCross, zeroCrossEventHandler, RISING); // attach an interupt event function for zero cross detection
 
@@ -23,24 +23,24 @@ void ACDimmer::init(TimerOne& timerOne, byte interruptZeroCross, void(*zeroCross
     timerOne.attachInterrupt(dimmingLevelEventHandler, _frequencyStep); // attach an interupt event function for the triac firing moments
 }
 
-void ACDimmer::setDimmingLevel(byte dimmingLevel)
+void DimmerTriac::setDimmingLevel(byte dimmingLevel)
 {
     _dimmingLevel = dimmingLevel;
 }
 
-int ACDimmer::getDimmingLevel() const
+int DimmerTriac::getDimmingLevel() const
 {
     return _dimmingLevel;
 }
 
-volatile void ACDimmer::zeroCrossing()
+volatile void DimmerTriac::zeroCrossing()
 {
     _zeroCrossDetected = true; // set the true to tell our dimming() function that a zero cross has occured
     _dimmingCounter = 0;
     digitalWrite(_pinDimming, LOW);
 }
 
-volatile void ACDimmer::dimming()
+volatile void DimmerTriac::dimming()
 {
     if (_zeroCrossDetected == true)
     {

@@ -1,22 +1,22 @@
-#include "PinRelay.h"
+#include "RelayPin.h"
 
-PinRelay::PinRelay(byte pin, unsigned long minToggleMillis /* = 0*/) :
+RelayPin::RelayPin(byte pin, unsigned long minToggleMillis /* = 0*/) :
 RelayEx(minToggleMillis),
 _pin(pin)
 {
 }
 
-PinRelay::PinRelay(const PinRelay& other) :
+RelayPin::RelayPin(const RelayPin& other) :
 RelayEx(other),
 _pin(other._pin)
 {
 }
 
-PinRelay::~PinRelay()
+RelayPin::~RelayPin()
 {
 }
 
-PinRelay& PinRelay::operator=(const PinRelay& other)
+RelayPin& RelayPin::operator=(const RelayPin& other)
 {
     if (&other == this)
         return *this;
@@ -28,14 +28,14 @@ PinRelay& PinRelay::operator=(const PinRelay& other)
     return *this;
 }
 
-void PinRelay::On()
+void RelayPin::On()
 {
     digitalWrite(_pin, HIGH);
 
     RelayEx::On();
 }
 
-void PinRelay::Off()
+void RelayPin::Off()
 {
     digitalWrite(_pin, LOW);
 

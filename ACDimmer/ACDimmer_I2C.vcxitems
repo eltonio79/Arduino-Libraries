@@ -18,10 +18,10 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ACDimmer_I2C.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DimmerTriac_I2C.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ACDimmer_I2C.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)DimmerTriac_I2C.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)keywords.txt" />

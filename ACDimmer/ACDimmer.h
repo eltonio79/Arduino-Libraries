@@ -1,11 +1,11 @@
-#ifndef ACDimmer_H_
-#define ACDimmer_H_
+#ifndef DimmerTriac_H_
+#define DimmerTriac_H_
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 class TimerOne;
 
-class ACDimmer
+class DimmerTriac
 {
 private:
     byte _pinDimming;
@@ -16,8 +16,8 @@ private:
     static int _frequencyStep;        // 1000000 us / 100 Hz / 128
 
 public:
-    ACDimmer(byte pinDimming);
-    ~ACDimmer();
+    DimmerTriac(byte pinDimming);
+    ~DimmerTriac();
 
     void setDimmingLevel(byte dimmingLevel);                // set the dimming level
     int getDimmingLevel() const;                            // get the dimming level
@@ -30,4 +30,4 @@ public:
                      void(*dimmingLevelEventHandler)());    // initializes external timer callback functions
 };
 
-#endif // ACDimmer_H_
+#endif // DimmerTriac_H_

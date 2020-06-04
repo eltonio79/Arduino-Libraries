@@ -1,7 +1,7 @@
-#include "RingerRelay.h"
+#include "RelayRinger.h"
 #include <PCF8574.h>
 
-RingerRelay::RingerRelay(PCF8574& expander, byte pinA, byte pinB) :
+RelayRinger::RelayRinger(PCF8574& expander, byte pinA, byte pinB) :
 RelayEx(0), // better to call it instead of implicite call..
 _expander(expander),
 _pinA(pinA),
@@ -9,10 +9,10 @@ _pinB(pinB),
 _previousDingDong(0),
 _intervalDingDong(100)
 {
-    // nie dzia³a tu _expander.write(...) - wiesza MySensors / system !
+    // nie dziaï¿½a tu _expander.write(...) - wiesza MySensors / system !
 }
 
-RingerRelay::RingerRelay(const RingerRelay& other) :
+RelayRinger::RelayRinger(const RelayRinger& other) :
 RelayEx(other),
 _expander(other._expander),
 _pinA(other._pinA),
@@ -22,11 +22,11 @@ _intervalDingDong(other._intervalDingDong)
 {
 }
 
-RingerRelay::~RingerRelay()
+RelayRinger::~RelayRinger()
 {
 }
 
-RingerRelay& RingerRelay::operator=(const RingerRelay& other)
+RelayRinger& RelayRinger::operator=(const RelayRinger& other)
 {
     if (&other == this)
         return *this;
@@ -42,7 +42,7 @@ RingerRelay& RingerRelay::operator=(const RingerRelay& other)
     return *this;
 }
 
-void RingerRelay::update()
+void RelayRinger::update()
 {
     static bool dingDong = true;
 
@@ -70,12 +70,12 @@ void RingerRelay::update()
     Relay::update();
 }
 
-void RingerRelay::On()
+void RelayRinger::On()
 {
     RelayEx::On();
 }
 
-void RingerRelay::Off()
+void RelayRinger::Off()
 {
     RelayEx::Off();
 }

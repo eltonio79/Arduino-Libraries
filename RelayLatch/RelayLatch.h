@@ -1,12 +1,12 @@
-#ifndef LatchingRelay_H_
-#define LatchingRelay_H_
+#ifndef RelayLatch_H_
+#define RelayLatch_H_
 
 #include <Arduino.h>
 #include <RelayEx.h>
 
 class PCF8574;
 
-class LatchingRelay : public RelayEx
+class RelayLatch : public RelayEx
 {
     static const byte _switchingOffsetTimeMillis;
 
@@ -15,10 +15,10 @@ class LatchingRelay : public RelayEx
     byte _pinB;
 
 public:
-    LatchingRelay(PCF8574& expander, byte pinA, byte pinB);
-    LatchingRelay(const LatchingRelay& other);
-    LatchingRelay& operator=(const LatchingRelay& other);
-    virtual ~LatchingRelay();
+    RelayLatch(PCF8574& expander, byte pinA, byte pinB);
+    RelayLatch(const RelayLatch& other);
+    RelayLatch& operator=(const RelayLatch& other);
+    virtual ~RelayLatch();
 
 protected:
     // relay type dependant methods
@@ -26,4 +26,4 @@ protected:
     virtual void Off();
 };
 
-#endif // LatchingRelay_H_
+#endif // RelayLatch_H_

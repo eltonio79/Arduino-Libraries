@@ -1,12 +1,12 @@
-#ifndef RingerRelay_H_
-#define RingerRelay_H_
+#ifndef RelayRinger_H_
+#define RelayRinger_H_
 
 #include <Arduino.h>
 #include <RelayEx.h>
 
 class PCF8574;
 
-class RingerRelay : public RelayEx
+class RelayRinger : public RelayEx
 {
     PCF8574& _expander;
     byte _pinA;
@@ -16,10 +16,10 @@ class RingerRelay : public RelayEx
     unsigned long _intervalDingDong;
 
 public:
-    RingerRelay(PCF8574& expander, byte pinA, byte pinB);
-    RingerRelay(const RingerRelay& other);
-    RingerRelay& operator=(const RingerRelay& other);
-    virtual ~RingerRelay();
+    RelayRinger(PCF8574& expander, byte pinA, byte pinB);
+    RelayRinger(const RelayRinger& other);
+    RelayRinger& operator=(const RelayRinger& other);
+    virtual ~RelayRinger();
 
     virtual void update();
 protected:
@@ -28,4 +28,4 @@ protected:
     virtual void Off();
 };
 
-#endif // RingerRelay_H_
+#endif // RelayRinger_H_
