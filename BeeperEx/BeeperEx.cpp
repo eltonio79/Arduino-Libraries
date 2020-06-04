@@ -1,6 +1,6 @@
 #include "BeeperEx.h"
+#include "Pitches.h"
 #include <NewTone.h>
-#include <Pitches.h>
 
 BeeperEx::~BeeperEx()
 {
