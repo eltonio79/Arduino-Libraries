@@ -4,7 +4,7 @@
 // define if needed; TODO - move MySensors Logic into some template common class
 // #define MYSENSORS_INTEGRATION
 
-#include "..\DimmerEx\DimmerEx.h"
+#include <DimmerEx.h>
 
 class MyMessage;
 

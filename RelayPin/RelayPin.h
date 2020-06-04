@@ -1,8 +1,8 @@
 #ifndef PinRelay_H_
 #define PinRelay_H_
 
-#include "Arduino.h"
-#include "RelayEx.h"
+#include <Arduino.h>
+#include <RelayEx.h>
 
 class PinRelay : public RelayEx
 {

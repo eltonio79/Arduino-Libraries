@@ -1,6 +1,6 @@
 #include "RelayEx.h"
-#include <..\MySensors\core\MyMessage.h>
-#include <..\MySensors\core\MySensorsCore.h>
+#include <core\MyMessage.h>
+#include <core\MySensorsCore.h>
 
 MyMessage* RelayEx::MYMESSAGE_ACCESSOR = nullptr;   // reference to global message to controller, used to construct messages "on the fly"
 

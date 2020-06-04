@@ -1,7 +1,7 @@
 #include "DimmerI2C.h"
 #include <Wire.h>
-#include "..\..\MySensors\core\MyMessage.h"
-#include "..\..\MySensors\core\MySensorsCore.h"
+#include "..\MySensors\core\MyMessage.h"
+#include "..\MySensors\core\MySensorsCore.h"
 
 // Implementation of DimmerI2C class
 

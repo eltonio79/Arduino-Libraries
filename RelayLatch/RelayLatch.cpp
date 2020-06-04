@@ -1,5 +1,5 @@
 #include "LatchingRelay.h"
-#include "PCF8574.h"
+#include <PCF8574.h>
 
 // define static class members
 const byte LatchingRelay::_switchingOffsetTimeMillis = 15;

@@ -1,5 +1,5 @@
 #include "DoorRelay.h"
-#include "PCF8574.h"
+#include <PCF8574.h>
 
 // define static class members
 DoorRelay::DoorRelay(PCF8574& expander, byte pinA, byte pinB) :

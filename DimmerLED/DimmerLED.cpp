@@ -1,8 +1,8 @@
 #include "DimmerLED.h"
 
 #if defined(MYSENSORS_INTEGRATION)
-#include "..\MySensors\core\MyMessage.h"
-#include "..\MySensors\core\MySensorsCore.h"
+#include <core\MyMessage.h>
+#include <core\MySensorsCore.h>
 #endif
 
 // Implementation of DimmerLED class

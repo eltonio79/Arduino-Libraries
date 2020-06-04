@@ -1,8 +1,8 @@
 #ifndef LatchingRelay_H_
 #define LatchingRelay_H_
 
-#include "Arduino.h"
-#include "RelayEx.h"
+#include <Arduino.h>
+#include <RelayEx.h>
 
 class PCF8574;
 

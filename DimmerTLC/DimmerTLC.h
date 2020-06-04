@@ -1,7 +1,7 @@
 #ifndef DIMMERTLC_H_
 #define DIMMERTLC_H_
 
-#include "..\DimmerEx\DimmerEx.h"
+#include "DimmerEx.h"
 
 class MyMessage;
 
