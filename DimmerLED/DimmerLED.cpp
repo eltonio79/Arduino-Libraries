@@ -14,7 +14,7 @@ byte DimmerLED::RAW_VALUE_MAX = 255; // full ON
 MyMessage* DimmerLED::MYMESSAGE_ACCESSOR = nullptr;   // reference to global message to controller, used to construct messages "on the fly"
 #endif
 
-DimmerLED::DimmerLED(uint8_t* pins, uint8_t pinsCount, byte minimumValue, byte maximumValue) :
+DimmerLED::DimmerLED(byte* pins, byte pinsCount, byte minimumValue, byte maximumValue) :
     DimmerEx(),
     _minimumValue(minimumValue),
     _maximumValue(maximumValue),
@@ -25,8 +25,8 @@ DimmerLED::DimmerLED(uint8_t* pins, uint8_t pinsCount, byte minimumValue, byte m
 {
 }
 
-DimmerLED::DimmerLED(uint8_t pin) :
-    DimmerLED(new uint8_t(pin))
+DimmerLED::DimmerLED(byte pin) :
+    DimmerLED(new byte(pin))
 {
 }
 

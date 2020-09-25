@@ -4,6 +4,7 @@
 // define if needed; TODO - move MySensors Logic into some template common class
 // #define MYSENSORS_INTEGRATION
 
+#include <Arduino.h>
 #include <DimmerEx.h>
 
 class MyMessage;
@@ -25,11 +26,11 @@ public:
     // #param pinsCount
     // #param minimumValue (0 - 255); dobiera� eksperymentalnie
     // #param maximumValue (0 - 255); dobiera� eksperymentalnie
-    DimmerLED(uint8_t* pins,
-              uint8_t pinsCount = 1,
+    DimmerLED(byte* pins,
+              byte pinsCount = 1,
               byte minimumValue = RAW_VALUE_MIN,
               byte maximumValue = RAW_VALUE_MAX);
-    DimmerLED(uint8_t pin);
+    DimmerLED(byte pin);
     DimmerLED(const DimmerLED& other);
     virtual ~DimmerLED();
     DimmerLED& operator=(const DimmerLED& other);
